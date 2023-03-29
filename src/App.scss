@@ -1,12 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
     --main-bg-color: white;
     --main-text-color: black;
+    --main-box-color:rgba(0, 0, 0, 0.5)
 }
 
-.App {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    width: 100vh;
+.container {
+  width:  700px;
 }

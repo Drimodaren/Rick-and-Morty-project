@@ -1,20 +1,23 @@
 .main {
-    width: 100%;
     height: 100%;
     flex: 1;
     display: flex;
     justify-content: center;
     overflow: auto;
-    position: absolute;
     align-items: center;
-    padding: 16px;
+    & > div {
+        overflow: hidden;
+    
+    }
+}
+.leading{
+  display: flex;
+  justify-content: center;
+}
+.leadingherf{
+  align-self: flex-end;
 }
 
-.mainImage {
-    position: absolute;
-    width: 600px;
-    height: 200px;
-    left: 434px;
-    top: 86px;
-}
+
+
 
