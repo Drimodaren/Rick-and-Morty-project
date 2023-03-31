@@ -1,0 +1,26 @@
+.Card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: #efefef;
+    width: 240px;
+    min-height: 128px;
+    border-radius: 7px;
+    box-shadow: 0px 5px 8px -3px var(--main-box-color);
+    overflow: hidden;
+  
+    h1 {
+    }
+    h2 {
+    }
+    h3 {
+    }
+    img {
+        width: 240px;
+    }
+}
+.CardImage {
+  min-height: 244px;
+}

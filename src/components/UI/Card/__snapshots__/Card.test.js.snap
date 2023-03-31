@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cardComponent should render card with image 1`] = `
+<div
+  class="Card CardImage"
+  data-testid="Card-2"
+>
+  <img
+    alt="Card"
+    src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+  />
+  <h1>
+    Rick
+  </h1>
+  <h2>
+    Human
+  </h2>
+</div>
+`;
+
+exports[`cardComponent should render card withOut image 1`] = `
+<div
+  class="Card"
+  data-testid="Card-2"
+>
+  <h1>
+    Rick
+  </h1>
+  <h2>
+    Human
+  </h2>
+  <h3>
+    Bastard
+  </h3>
+</div>
+`;
