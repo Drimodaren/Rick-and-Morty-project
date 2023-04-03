@@ -29,4 +29,3 @@ describe("cardComponent", () => {
         //expect(screen.getByTestId("Card-2").querySelector('img')).toBeDefined();
     });
 });
-
