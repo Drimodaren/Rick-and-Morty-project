@@ -1,7 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from './rootReducer';
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./rootReducer";
 
 export const initialredux = configureStore({
-  reducer: rootReducer,
-  devTools: process.env.NODE_ENV === 'development',
+    reducer: rootReducer,
+    devTools: process.env.NODE_ENV === "development"
 });
+
+export const setupStore = preloadedState => {
+    return configureStore({
+        reducer: rootReducer,
+        preloadedState
+    });
+};
