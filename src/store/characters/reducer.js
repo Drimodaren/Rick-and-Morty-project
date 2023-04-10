@@ -1,11 +1,11 @@
-import { CHANGE_CURRENT_PAGE, ERRORS_CHARACTER, LOAD_MORE, SET_CHARACTER, SET_LOADED, SET_LOADING } from "./actionTypes";
+import { CHANGE_CURRENT_PAGE, ERRORS_CHARACTER, LOAD_MORE, SET_CHARACTERS, SET_LOADED, SET_LOADING } from "./actionTypes";
 import { LOADING_STATE } from "./constans";
 import { INITIAL_STATE } from "./initialState";
 
 export const characterReducer = (state = INITIAL_STATE, action) => {
   
     switch (action.type) {
-        case SET_CHARACTER:
+        case SET_CHARACTERS:
             return {
                 ...state,
                 characters: action.characters

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import style from "./Main.module.scss";
 import mainImage from "../../../images/Charates_Main.png";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCharaters } from "../../../store/characters/actions";
+import { loadCharaсters } from "../../../store/characters/actions";
 import Card from "../../UI/Card";
 import { getAllCharacters } from "../../../store/characters/selectors";
 
@@ -12,7 +12,7 @@ export default function Main({ children }) {
     console.log(characters);
 
     useEffect(() => {
-        dispatch(loadCharaters());
+        dispatch(loadCharaсters());
     }, [dispatch]);
     return (
         <main className={style.main}>

@@ -3,7 +3,7 @@ import {
     changeCurrentPageAC,
     loadCharaters,
     loadMoreAc,
-    setCharatersAC,
+    setCharaсtersAC,
     setErrorsAC,
     setLoadedAC,
     setLoadingAC
@@ -94,7 +94,7 @@ describe("charactersReducer", () => {
             expect(state.currentPage).toEqual(1);
         });
         it("should set characters", () => {
-            const action = setCharatersAC([1, 2, 3, 4]);
+            const action = setCharaсtersAC([1, 2, 3, 4]);
             const state = characterReducer(INITIAL_STATE, action);
             expect(state.characters).toHaveLength(4);
             expect(state.characters).toEqual([1, 2, 3, 4]);
@@ -116,7 +116,7 @@ describe("charactersReducer", () => {
             expect(state.errors).toBe("хуйня");
         });
         it("should load more characters", () => {
-            const actionOld = setCharatersAC([1, 2, 3, 4]);
+            const actionOld = setCharaсtersAC([1, 2, 3, 4]);
             const stateOld = characterReducer(INITIAL_STATE, actionOld);
             const actionNew = loadMoreAc([5, 6, 7, 8]);
             const stateNew = characterReducer(stateOld, actionNew);

@@ -3,14 +3,14 @@ import {
     CHANGE_CURRENT_PAGE,
     ERRORS_CHARACTER,
     LOAD_MORE,
-    SET_CHARACTER,
+    SET_CHARACTERS,
     SET_LOADED,
     SET_LOADING
 } from "./actionTypes";
 
-export const setCharatersAC = characters => {
+export const setCharaсtersAC = characters => {
     return {
-        type: SET_CHARACTER,
+        type: SET_CHARACTERS,
         characters
     };
 };
@@ -58,13 +58,13 @@ export const asyncThunk =
             dispatch(setLoadedAC());
         }
     };
-const _loadCharaters = () => async (dispatch, getState) => {
+const _loadCharaсters = () => async (dispatch, getState) => {
     const page = getState().character.currentPage;
     const characters = await getCharacters({ page });
     //console.log(characters.data.results);
 
-    dispatch(setCharatersAC(characters.data.results));
+    dispatch(setCharaсtersAC(characters.data.results));
 };
-export const loadCharaters = () => async (dispatch, getState) => {
-    dispatch(asyncThunk(_loadCharaters));
+export const loadCharaсters = () => async (dispatch, getState) => {
+    dispatch(asyncThunk(_loadCharaсters));
 };
