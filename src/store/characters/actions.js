@@ -8,7 +8,7 @@ import {
     SET_LOADING
 } from "./actionTypes";
 
-export const setCharaсtersAC = characters => {
+export const setCharactersAC = characters => {
     return {
         type: SET_CHARACTERS,
         characters
@@ -58,13 +58,13 @@ export const asyncThunk =
             dispatch(setLoadedAC());
         }
     };
-const _loadCharaсters = () => async (dispatch, getState) => {
+const _loadCharacters = () => async (dispatch, getState) => {
     const page = getState().character.currentPage;
     const characters = await getCharacters({ page });
     //console.log(characters.data.results);
 
-    dispatch(setCharaсtersAC(characters.data.results));
+    dispatch(setCharactersAC(characters.data.results));
 };
-export const loadCharaсters = () => async (dispatch, getState) => {
-    dispatch(asyncThunk(_loadCharaсters));
+export const loadCharacters = () => async (dispatch, getState) => {
+    dispatch(asyncThunk(_loadCharacters));
 };

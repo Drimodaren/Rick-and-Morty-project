@@ -1,9 +1,9 @@
 import { setupStore } from "../..";
 import {
     changeCurrentPageAC,
-    loadCharaters,
     loadMoreAc,
-    setCharaсtersAC,
+    loadCharacters,
+    setCharactersAC,
     setErrorsAC,
     setLoadedAC,
     setLoadingAC
@@ -13,27 +13,27 @@ import { INITIAL_STATE } from "../initialState";
 import { characterReducer } from "../reducer";
 import { getAllCharacters, getErrors, getLoading, getPage } from "../selectors";
 
+import * as rickmortyapi from "rickmortyapi";
+jest.mock("rickmortyapi");
 let store;
+
 describe("charactersReducer", () => {
     describe("Action", () => {
         beforeEach(() => {
             store = setupStore();
         });
-        it.skip("should load initial characters", () => {
-            jest.mock("rickmortyapi", () => {
-                return {
-                    getCharacters: jest.fn(() => {
-                        return {
-                            data: {
-                                results: [1, 2, 3]
-                            }
-                        };
-                    })
-                };
-            });
-            store.dispatch(loadCharaters());
+        it("should load initial characters", async () => {
+            //тест асинхронный
+            const response = {
+                //готовим данные
+                data: {
+                    results: [1, 2, 3]
+                }
+            };
+            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response)); //подменяем данные, см. выше импорт и jest.mock("rickmortyapi");
+            await store.dispatch(loadCharacters()); //await обязательно
 
-            expect(getAllCharacters(store.getState())).toHaveLength(0);
+            expect(getAllCharacters(store.getState())).toHaveLength(3); //тут будет новый результат
         });
     });
 
@@ -94,7 +94,7 @@ describe("charactersReducer", () => {
             expect(state.currentPage).toEqual(1);
         });
         it("should set characters", () => {
-            const action = setCharaсtersAC([1, 2, 3, 4]);
+            const action = setCharactersAC([1, 2, 3, 4]);
             const state = characterReducer(INITIAL_STATE, action);
             expect(state.characters).toHaveLength(4);
             expect(state.characters).toEqual([1, 2, 3, 4]);
@@ -116,7 +116,7 @@ describe("charactersReducer", () => {
             expect(state.errors).toBe("хуйня");
         });
         it("should load more characters", () => {
-            const actionOld = setCharaсtersAC([1, 2, 3, 4]);
+            const actionOld = setCharactersAC([1, 2, 3, 4]);
             const stateOld = characterReducer(INITIAL_STATE, actionOld);
             const actionNew = loadMoreAc([5, 6, 7, 8]);
             const stateNew = characterReducer(stateOld, actionNew);
