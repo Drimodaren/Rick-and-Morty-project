@@ -6,7 +6,8 @@ import {
     setCharactersAC,
     setErrorsAC,
     setLoadedAC,
-    setLoadingAC
+    setLoadingAC,
+    asyncThunk
 } from "../actions";
 import { LOADING_STATE } from "../constans";
 import { INITIAL_STATE } from "../initialState";
@@ -17,11 +18,22 @@ import * as rickmortyapi from "rickmortyapi";
 jest.mock("rickmortyapi");
 let store;
 
+const mockDispatch = jest.fn();
+
 describe("charactersReducer", () => {
     describe("Action", () => {
         beforeEach(() => {
             store = setupStore();
+            mockDispatch.mockClear()
         });
+        it('should call dispatch three times', async()=>{
+            const cb = ()=>(dispatch)=>{}
+            const thunk =  asyncThunk(cb)
+            await thunk(mockDispatch,store.getState)
+            expect(mockDispatch).toHaveBeenCalledTimes(3)
+            expect(mockDispatch).toHaveBeenCalledWith(setLoadingAC())
+            expect(mockDispatch).toHaveBeenCalledWith(setLoadedAC())
+        })
         it("should load initial characters", async () => {
             //тест асинхронный
             const response = {
