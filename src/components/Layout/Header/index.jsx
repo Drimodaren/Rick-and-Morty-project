@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./Header.module.scss";
 import logo from "../../../images/logo.png";
+import { NavLink } from "react-router-dom";
+import { ROUTES } from "../../../pages/constant";
 
 export default function Header() {
     return (
@@ -8,9 +10,9 @@ export default function Header() {
             <div className="container">
                 <img src={logo} alt="" />
                 <div className={style.link}>
-                    <a href="1">Charaters</a>
-                    <a href="1">Location</a>
-                    <a href="1">Episodes</a>
+                    <NavLink to={ROUTES.CHARACTERS}>Characters</NavLink>
+                    <NavLink to={ROUTES.LOCATIONS}>Location</NavLink>
+                    <NavLink to={ROUTES.EPISODES}>Episodes</NavLink>
                 </div>
             </div>
         </header>
