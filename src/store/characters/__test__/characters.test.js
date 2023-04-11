@@ -28,9 +28,9 @@ describe("charactersReducer", () => {
         });
         it('should call dispatch three times', async()=>{
             const cb = ()=>(dispatch)=>{}
-            const thunk = asyncThunk(cb)
-            thunk(mockDispatch,store.getState)
-            expect(mockDispatch).toHaveBeenCalledTimes(2)
+            const thunk =  asyncThunk(cb)
+            await thunk(mockDispatch,store.getState)
+            expect(mockDispatch).toHaveBeenCalledTimes(3)
             expect(mockDispatch).toHaveBeenCalledWith(setLoadingAC())
             expect(mockDispatch).toHaveBeenCalledWith(setLoadedAC())
         })
