@@ -23,7 +23,7 @@ export default function Characters() {
         dispatch(loadMoreCharacters());
     };
 
-    if (loading === "Loading") {
+    if (true) {
         return <Spinner />;
     }
     if (error) {
