@@ -68,3 +68,14 @@ const _loadCharacters = () => async (dispatch, getState) => {
 export const loadCharacters = () => async (dispatch, getState) => {
     dispatch(asyncThunk(_loadCharacters));
 };
+
+const _loadMoreCharacters = () => async (dispatch, getState) => {
+    dispatch(changeCurrentPageAC());
+    const page = getState().character.currentPage;
+    console.log(getState());
+    const characters = await getCharacters({ page });
+    dispatch(loadMoreAc(characters.data.results));
+};
+export const loadMoreCharacters = () => async (dispatch, getState) => {
+    dispatch(asyncThunk(_loadMoreCharacters));
+};

@@ -1,6 +1,9 @@
-import { createBrowserRouter,  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layout";
+import Characters from "./chacraters";
 import { ROUTES } from "./constant";
+import Episodes from "./episodes";
+import Locations from "./locations";
 
 export const route = createBrowserRouter([
     {
@@ -9,24 +12,24 @@ export const route = createBrowserRouter([
             {
                 path: ROUTES.CHARACTERS,
                 // element: <div><Outlet/></div>,
-                children:[
-                    {   
-                        path:"/",
-                        element: <div>CharactersComponent</div>
+                children: [
+                    {
+                        path: "/",
+                        element: <Characters />
                     },
                     {
-                        path:":id",
+                        path: ":id",
                         element: <div>Card</div>
                     }
                 ]
             },
             {
                 path: ROUTES.EPISODES,
-                element: <div>Episodes</div>
+                element: <Episodes />
             },
             {
                 path: ROUTES.LOCATIONS,
-                element: <div>Location</div>
+                element: <Locations />
             }
         ]
     }
