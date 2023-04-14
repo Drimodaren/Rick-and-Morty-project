@@ -1,0 +1,33 @@
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    height: 80vh;
+    overflow: auto;
+    & > img {
+        width: 600px;
+        height: 200px;
+    }
+}
+
+.charactersCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.input {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    & > input {
+        height: 56px;
+        width: 240px;
+    }
+}
+.button{
+  height: 36px;
+  width: 154px;
+}
