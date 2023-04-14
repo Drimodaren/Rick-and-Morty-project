@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Card from "../../components/UI/Card";
-import { Spinner } from "../../components/UI/Spinner";
-import { loadCharacters, loadMoreCharacters } from "../../store/characters/actions";
-//import { LOADING_STATE } from "../../store/characters/constans";
-import { getLoading, getErrors, getAllCharacters } from "../../store/characters/selectors";
+import Card from "components/UI/Card";
+import { Spinner } from "components/UI/Spinner";
+import { loadCharacters, loadMoreCharacters } from "store/characters/actions";
+import { LOADING_STATE } from "store/characters/constans";
+import { getLoading, getErrors, getAllCharacters } from "store/characters/selectors";
 import style from "./Characters.module.scss";
-import image from "../../images/Charates_Main.png";
-
-export const LOADING_STATE = { NEVER: "Never", LOADING: "Loading", LOADED: "Loaded" };
+import image from "images/Charates_Main.png";
 
 export default function Characters() {
     const dispatch = useDispatch();
@@ -23,9 +21,6 @@ export default function Characters() {
         dispatch(loadMoreCharacters());
     };
 
-    if (true) {
-        return <Spinner />;
-    }
     if (error) {
         return <div>{error}</div>;
     }
@@ -50,9 +45,9 @@ export default function Characters() {
                         id={item.id}
                     />
                 ))}
+                {loading === LOADING_STATE.LOADING && <Spinner />}
             </div>
             <button className={style.button} onClick={loadMore}>
-                {" "}
                 LOAD MORE
             </button>
         </div>

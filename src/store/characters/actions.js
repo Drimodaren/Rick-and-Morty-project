@@ -7,6 +7,7 @@ import {
     SET_LOADED,
     SET_LOADING
 } from "./actionTypes";
+import { getPage } from "./selectors";
 
 export const setCharactersAC = characters => {
     return {
@@ -70,12 +71,11 @@ export const loadCharacters = () => async (dispatch, getState) => {
 };
 
 const _loadMoreCharacters = () => async (dispatch, getState) => {
-    dispatch(changeCurrentPageAC());
-    const page = getState().character.currentPage;
-    console.log(getState());
+    const page = getPage(getState())
     const characters = await getCharacters({ page });
     dispatch(loadMoreAc(characters.data.results));
 };
 export const loadMoreCharacters = () => async (dispatch, getState) => {
+    dispatch(changeCurrentPageAC());
     dispatch(asyncThunk(_loadMoreCharacters));
 };
