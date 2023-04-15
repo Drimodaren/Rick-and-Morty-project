@@ -24,10 +24,7 @@ export default function SingleCharacter() {
     }
     return (
         <div className={style.SingleCharacte}>
-            <div className={style.buttonBack}>
-                <BackButton />
-            </div>
-
+            <BackButton />
             <img src={character.image} alt="cardImage" className={style.cardImage} />
             <h1>{character.name}</h1>
             <div className={style.allInformations}>
