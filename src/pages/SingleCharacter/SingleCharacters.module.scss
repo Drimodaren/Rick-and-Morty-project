@@ -61,6 +61,7 @@
     flex-direction: column;
     gap: 20px;
     width: 413px;
+    height: 350px;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 700;
@@ -68,6 +69,7 @@
     line-height: 24px;
     letter-spacing: 0.15px;
     color: #081f32;
+    overflow: auto;
     p {
         font-weight: 400;
         font-size: 14px;

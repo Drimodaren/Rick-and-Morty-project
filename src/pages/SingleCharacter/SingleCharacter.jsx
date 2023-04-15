@@ -63,10 +63,10 @@ export default function SingleCharacter() {
                         </div>
                     </div>
                     <div className={style.cardEpisodes}>
-                        {character.episode.slice(0, 5).map(item => (
+                        {character.episode.map(item => (
                             <EpisodesCharacter
                                 key={item}
-                                fake={item}
+                                url={item}
                                 // episode={item.episode}
                                 // name={item.name}
                                 // air_date={item.air_date}
