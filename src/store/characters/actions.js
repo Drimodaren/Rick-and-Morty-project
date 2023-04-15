@@ -1,4 +1,4 @@
-import { getCharacters } from "rickmortyapi";
+import { getCharacter, getCharacters } from "rickmortyapi";
 import {
     CHANGE_CURRENT_PAGE,
     ERRORS_CHARACTER,
@@ -15,6 +15,7 @@ export const setCharactersAC = characters => {
         characters
     };
 };
+
 export const setLoadingAC = () => {
     return {
         type: SET_LOADING
@@ -70,8 +71,16 @@ export const loadCharacters = () => async (dispatch, getState) => {
     dispatch(asyncThunk(_loadCharacters));
 };
 
+const _loadCharacter = id => async (dispatch, getState) => {
+    const character = await getCharacter(id);
+    dispatch(setCharactersAC([character.data]));
+};
+export const loadCharacter = id => async (dispatch, getState) => {
+    dispatch(asyncThunk(_loadCharacter, id));
+};
+
 const _loadMoreCharacters = () => async (dispatch, getState) => {
-    const page = getPage(getState())
+    const page = getPage(getState());
     const characters = await getCharacters({ page });
     dispatch(loadMoreAc(characters.data.results));
 };

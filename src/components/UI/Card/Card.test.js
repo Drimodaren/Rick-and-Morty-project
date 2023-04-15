@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Card from ".";
+import { withBrowserRouterRender } from "testUtils";
 
 describe("cardComponent", () => {
     it("should render card withOut image", () => {
-        render(<Card url={""} title="Rick" description="Human" info="Bastard" id={2} />);
+        withBrowserRouterRender(<Card url={""} title="Rick" description="Human" info="Bastard" id={2} />);
         expect(screen.getByTestId("Card-2")).toHaveTextContent("Rick");
         expect(screen.getByTestId("Card-2")).toHaveTextContent("Human");
         expect(screen.getByTestId("Card-2")).toHaveTextContent("Bastard");
@@ -11,7 +12,7 @@ describe("cardComponent", () => {
         expect(screen.getByTestId("Card-2")).toMatchSnapshot();
     });
     it("should render card with image", () => {
-        render(
+        withBrowserRouterRender(
             <Card
                 url={""}
                 title="Rick"
