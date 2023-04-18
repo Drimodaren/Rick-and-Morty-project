@@ -4,6 +4,7 @@ import Characters from "./chacraters";
 import { ROUTES } from "./constant";
 import Episodes from "./episodes";
 import Locations from "./locations";
+import SingleCharacter from "./SingleCharacter/SingleCharacter";
 
 export const route = createBrowserRouter([
     {
@@ -18,8 +19,8 @@ export const route = createBrowserRouter([
                         element: <Characters />
                     },
                     {
-                        path: ":id",
-                        element: <div>Card</div>
+                        path: ":characterId",
+                        element: <SingleCharacter />
                     }
                 ]
             },

@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`cardComponent should render card with image 1`] = `
-<button
+<a
   class="Card CardImage"
   data-testid="Card-2"
+  href="/2"
 >
   <img
     alt="Card"
@@ -15,13 +16,14 @@ exports[`cardComponent should render card with image 1`] = `
   <h2>
     Human
   </h2>
-</button>
+</a>
 `;
 
 exports[`cardComponent should render card withOut image 1`] = `
-<button
+<a
   class="Card"
   data-testid="Card-2"
+  href="/2"
 >
   <h1>
     Rick
@@ -32,5 +34,5 @@ exports[`cardComponent should render card withOut image 1`] = `
   <h3>
     Bastard
   </h3>
-</button>
+</a>
 `;

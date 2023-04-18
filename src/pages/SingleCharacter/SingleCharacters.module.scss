@@ -1,0 +1,90 @@
+.SingleCharacte {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    h1 {
+        margin-bottom: 50px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 56px;
+    }
+}
+
+.cardImage {
+    margin: 20px;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+}
+.allInformations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cardInformations {
+    display: flex;
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
+.characterInformations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 413px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #081f32;
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.25px;
+        color: #6e798c;
+    }
+}
+.cardEpisodes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 413px;
+    height: 350px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #081f32;
+    overflow: auto;
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.25px;
+        color: #6e798c;
+    }
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    width: 570px;
+    h2 {
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        width: 157px;
+        height: 24px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: #8e8e93;
+    }
+}
