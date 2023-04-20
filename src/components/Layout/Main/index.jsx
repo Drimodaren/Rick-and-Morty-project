@@ -1,4 +1,4 @@
-import style from "./Main.module.scss";
+import style from "./main.module.scss";
 import { Outlet } from "react-router";
 
 export default function Main() {

@@ -1,1 +1,1 @@
-export const ROUTES = { CHARACTERS: "/", EPISODES: "episodes", LOCATIONS: "locations" };
+export const ROUTES = { CHARACTERS: "characters", EPISODES: "episodes", LOCATIONS: "locations" };
