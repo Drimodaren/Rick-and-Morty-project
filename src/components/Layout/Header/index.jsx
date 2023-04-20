@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <header className={style.header}>
             <div className="container">
-                <NavLink to={"./"}>
+                <NavLink to={ROUTES.MAIN}>
                     <img src={logo} alt="" />
                 </NavLink>
 
