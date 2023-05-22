@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilterThunk } from "store/characters/actions";
+import { changeSelectThunk } from "store/characters/actions";
 import style from "./InputFilter.module.scss";
 
 export default function BaseSelectCharacters({ fieldName, placeholder, children }) {
@@ -8,17 +8,15 @@ export default function BaseSelectCharacters({ fieldName, placeholder, children 
     const value = useSelector(state => state.character.form[fieldName]);
 
     const handleSelectName = e => {
-        dispatch(changeFilterThunk(fieldName, e.target.value));
+        dispatch(changeSelectThunk(fieldName, e.target.value));
     };
 
     return (
-        <div className={style.form_feld} >
-        <select value={value} type="text" onChange={handleSelectName} placeholder={placeholder}>
-            <option value="">
-                --{placeholder}--
-            </option>
-            {children}
-        </select>
+        <div className={style.form_feld}>
+            <select value={value} type="text" onChange={handleSelectName} placeholder={placeholder}>
+                <option value="">--{placeholder}--</option>
+                {children}
+            </select>
         </div>
     );
 }

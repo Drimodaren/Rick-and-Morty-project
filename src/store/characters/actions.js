@@ -119,6 +119,11 @@ export const changeFilterThunk = (fieldName, value) => dispatch => {
     dispatch(pageResetAC());
     dispatch(debounceThunk(loadCharacters));
 };
+export const changeSelectThunk = (fieldName, value) => dispatch => {
+    dispatch(changeFormFieldAC(fieldName, value));
+    dispatch(pageResetAC());
+    dispatch(asyncThunk(loadCharacters));
+};
 
 const _loadCharacters = () => async (dispatch, getState) => {
     const page = getPage(getState());

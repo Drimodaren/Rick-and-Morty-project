@@ -7,10 +7,8 @@ import { LOADING_STATE } from "store/characters/constans";
 import { getLoading, getErrors, getAllCharacters } from "store/characters/selectors";
 import style from "./Characters.module.scss";
 import image from "images/Charates_Main.png";
-import BaseFilterCharacters from "./filters/BaseFilterCharacters";
-import BaseSelectCharacters from "./filters/BaseFilterSelectCharacters";
 import LoadMore from "components/UI/LoadMore";
-import { GENDER, SPECIES, STATUS } from "pages/constant";
+import Filter from "./filters/Filter";
 
 export default function Characters() {
     const dispatch = useDispatch();
@@ -28,31 +26,9 @@ export default function Characters() {
     return (
         <div className={style.characters}>
             <img src={image} alt="Characters" />
-            <div className={style.inputFeld}>
-                <BaseFilterCharacters fieldName="name" placeholder="Name character..." label="Filter by name..." />
-                <BaseSelectCharacters fieldName="species" placeholder="Species">
-                    {SPECIES.map(item => (
-                        <option key={item} value={item}>
-                            {item}
-                        </option>
-                    ))}
-                </BaseSelectCharacters>
-                <BaseSelectCharacters fieldName="gender" placeholder="Gender">
-                    {GENDER.map(item => (
-                        <option key={item} value={item}>
-                            {item}
-                        </option>
-                    ))}
-                </BaseSelectCharacters>
-                <BaseSelectCharacters fieldName="status" placeholder="Status">
-                    {STATUS.map(item => (
-                        <option key={item} value={item}>
-                            {item}
-                        </option>
-                    ))}
-                </BaseSelectCharacters>
+            <div >
+                <Filter />
             </div>
-
             <div className={style.charactersCards}>
                 {characters.map(item => (
                     <Card
