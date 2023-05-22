@@ -4,5 +4,12 @@ export const INITIAL_STATE = {
     characters: [],
     loading: LOADING_STATE.NEVER,
     errors: "",
-    currentPage:1
+    currentPage:1,
+    form: {
+        name: "",
+        species: "",
+        gender: "",
+        status: ""
+    },
+    speciec:[]
 };
