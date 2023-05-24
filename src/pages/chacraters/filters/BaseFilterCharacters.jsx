@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeFilterThunk } from "store/characters/actions";
 import style from "./InputFilter.module.scss";
 
-export default function BaseFilterCharacters({ fieldName, placeholder, label, icon }) {
+export default function BaseFilterCharacters({ fieldName, placeholder, label }) {
     const dispatch = useDispatch();
     const value = useSelector(state => state.character.form[fieldName]);
     const [labelPosition, setLabelPosition] = useState(value === ""); // input
@@ -21,7 +21,7 @@ export default function BaseFilterCharacters({ fieldName, placeholder, label, ic
         <div className={style.form_feld} onFocus={handleOnFocus} onBlur={handleOnBlur}>
             <input id='inputFilter' type="text" value={value} onChange={handleFilterName} placeholder={labelPosition?undefined:placeholder} />
 
-            <label for='inputFilter' className={labelPosition ? "down" : style.up}> {icon}  {label}</label>
+            <label htmlFor='inputFilter' className={labelPosition ? "down" : style.up}>{label}</label>
         </div>
     );
 }

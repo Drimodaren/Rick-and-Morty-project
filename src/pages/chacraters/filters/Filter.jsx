@@ -5,14 +5,15 @@ import { GENDER, SPECIES, STATUS } from "./constant";
 import style from "./Filter.module.scss";
 
 export default function Filter() {
+   
     return (
         <div className="container">
             <div className={style.inputFeld}>
                 <BaseFilterCharacters
                     fieldName="name"
                     placeholder="Name character..."
-                    label="Filter by name..."
-                    icon="&#128269; "
+                    label= {<span>&#128269; Filter by name...</span>}
+                    
                 />
                 <BaseSelectCharacters fieldName="species" placeholder="Species">
                     {SPECIES.map(item => (

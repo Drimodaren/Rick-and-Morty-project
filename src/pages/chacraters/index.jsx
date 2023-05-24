@@ -26,7 +26,7 @@ export default function Characters() {
     return (
         <div className={style.characters}>
             <img src={image} alt="Characters" />
-            <div >
+            <div>
                 <Filter />
             </div>
             <div className={style.charactersCards}>
