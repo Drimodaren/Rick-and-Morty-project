@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import { getCharacterById } from "../../store/characters/selectors";
 import { loadCharacter } from "../../store/characters/actions";
 import { Spinner } from "../../components/UI/Spinner";
-import BackButton from "../../components/UI/BackButton";
 import style from "./SingleCharacters.module.scss";
 import EpisodesCharacter from "components/UI/EpisodesCharacter";
+import { withBackButton } from "components/UI/BackButton/withBackButton";
 
-export default function SingleCharacter() {
+export function SingleCharacter() {
     const dispatch = useDispatch();
     const params = useParams();
     const id = Number(params.characterId);
@@ -24,7 +24,7 @@ export default function SingleCharacter() {
     }
     return (
         <div className={style.SingleCharacte}>
-            <BackButton />
+            
             <img src={character.image} alt="cardImage" className={style.cardImage} />
             <h1>{character.name}</h1>
             <div className={style.allInformations}>
@@ -75,3 +75,5 @@ export default function SingleCharacter() {
         </div>
     );
 }
+
+export default withBackButton(SingleCharacter)
