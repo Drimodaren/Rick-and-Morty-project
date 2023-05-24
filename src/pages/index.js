@@ -1,11 +1,14 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layout";
-import Characters from "./chacraters";
+
 import { ROUTES } from "./constant";
-import Episodes from "./episodes";
-import Locations from "./locations";
-import SingleCharacter from "./SingleCharacter/SingleCharacter";
-import MainPage from "./MainPage";
+
+import { lazy } from "react";
+const MainPage = lazy(()=>import("./MainPage"))
+const Locations = lazy(()=>import("./locations"))
+const Episodes = lazy(()=>import("./episodes"))
+const Characters = lazy(()=>import("./chacraters"))
+const SingleCharacter = lazy(()=>import("./SingleCharacter/SingleCharacter"))
 
 export const route = createBrowserRouter([
     {
