@@ -20,7 +20,7 @@ export const characterReducer = (state = INITIAL_STATE, action) => {
         case SET_CHARACTERS:
             return {
                 ...state,
-                characters: action.characters
+                characters: { byId: action.byId, allIds: action.allIds }
             };
         case SET_LOADING:
             return {
@@ -50,7 +50,10 @@ export const characterReducer = (state = INITIAL_STATE, action) => {
         case LOAD_MORE:
             return {
                 ...state,
-                characters: [...state.characters, ...action.characters]
+                characters: {
+                    byId: { ...state.characters.byId, ...action.byId },
+                    allIds: [...state.characters.allIds, ...action.allIds]
+                }
             };
         case SET_NAME:
             return {

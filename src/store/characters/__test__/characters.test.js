@@ -12,7 +12,7 @@ import {
 import { LOADING_STATE } from "../constans";
 import { INITIAL_STATE } from "../initialState";
 import { characterReducer } from "../reducer";
-import { getAllCharacters, getErrors, getLoading, getPage } from "../selectors";
+import { getCharactersAllIds, getCharactersById, getErrors, getLoading, getPage } from "../selectors";
 
 import * as rickmortyapi from "rickmortyapi";
 jest.mock("rickmortyapi");
@@ -24,28 +24,28 @@ describe("charactersReducer", () => {
     describe("Action", () => {
         beforeEach(() => {
             store = setupStore();
-            mockDispatch.mockClear()
+            mockDispatch.mockClear();
         });
-        it('should call dispatch three times', async()=>{
-            const cb = ()=>(dispatch)=>{}
-            const thunk =  asyncThunk(cb)
-            await thunk(mockDispatch,store.getState)
-            expect(mockDispatch).toHaveBeenCalledTimes(3)
-            expect(mockDispatch).toHaveBeenCalledWith(setLoadingAC())
-            expect(mockDispatch).toHaveBeenCalledWith(setLoadedAC())
-        })
+        it("should call dispatch three times", async () => {
+            const cb = () => dispatch => {};
+            const thunk = asyncThunk(cb);
+            await thunk(mockDispatch, store.getState);
+            expect(mockDispatch).toHaveBeenCalledTimes(3);
+            expect(mockDispatch).toHaveBeenCalledWith(setLoadingAC());
+            expect(mockDispatch).toHaveBeenCalledWith(setLoadedAC());
+        });
         it("should load initial characters", async () => {
             //тест асинхронный
             const response = {
                 //готовим данные
                 data: {
-                    results: [1, 2, 3]
+                    results: [{ id: 1 }, { id: 2 }]
                 }
             };
             rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response)); //подменяем данные, см. выше импорт и jest.mock("rickmortyapi");
             await store.dispatch(loadCharacters()); //await обязательно
 
-            expect(getAllCharacters(store.getState())).toHaveLength(3); //тут будет новый результат
+            expect(getCharactersAllIds(store.getState())).toHaveLength(2); //тут будет новый результат
         });
     });
 
@@ -56,12 +56,19 @@ describe("charactersReducer", () => {
         it("should return all characters", () => {
             const store = setupStore({
                 character: {
-                    characters: [1, 2, 3]
+                    characters: { byId: { 1: { id: 1 }, 2: { id: 2 } }, allIds: [1, 2] }
                 }
             });
-            expect(getAllCharacters(store.getState())).toHaveLength(3);
-            store.dispatch(loadMoreAc([5, 6, 7]));
-            expect(getAllCharacters(store.getState())).toHaveLength(6);
+            expect(getCharactersById(store.getState())).toEqual({ 1: { id: 1 }, 2: { id: 2 } });
+            expect(getCharactersAllIds(store.getState())).toHaveLength(2);
+            store.dispatch(loadMoreAc([{ id: 3 }, { id: 4 }]));
+            expect(getCharactersById(store.getState())).toEqual({
+                1: { id: 1 },
+                2: { id: 2 },
+                3: { id: 3 },
+                4: { id: 4 }
+            });
+            expect(getCharactersAllIds(store.getState())).toHaveLength(4);
         });
         it("should return loading", () => {
             const store = setupStore({
@@ -102,15 +109,16 @@ describe("charactersReducer", () => {
             expect(state).toEqual(INITIAL_STATE);
             expect(state.loading).toBe(LOADING_STATE.NEVER);
             expect(state.errors).toBe("");
-            expect(state.characters).toHaveLength(0);
+            expect(state.characters.allIds).toHaveLength(0);
             expect(state.currentPage).toEqual(1);
         });
         it("should set characters", () => {
-            const action = setCharactersAC([1, 2, 3, 4]);
+            const action = setCharactersAC([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
             const state = characterReducer(INITIAL_STATE, action);
-            expect(state.characters).toHaveLength(4);
-            expect(state.characters).toEqual([1, 2, 3, 4]);
-            expect(state.characters).toContain(1);
+            expect(state.characters.allIds).toHaveLength(4);
+            expect(state.characters.allIds).toEqual([1, 2, 3, 4]);
+            expect(state.characters.allIds).toContain(1);
+            expect(state.characters.byId).toEqual({ 1: { id: 1 }, 2: { id: 2 }, 3: { id: 3 }, 4: { id: 4 } });
         });
         it("should set loading", () => {
             const action = setLoadingAC();
@@ -128,11 +136,21 @@ describe("charactersReducer", () => {
             expect(state.errors).toBe("хуйня");
         });
         it("should load more characters", () => {
-            const actionOld = setCharactersAC([1, 2, 3, 4]);
+            const actionOld = setCharactersAC([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
             const stateOld = characterReducer(INITIAL_STATE, actionOld);
-            const actionNew = loadMoreAc([5, 6, 7, 8]);
+            const actionNew = loadMoreAc([{ id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }]);
             const stateNew = characterReducer(stateOld, actionNew);
-            expect(stateNew.characters).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+            expect(stateNew.characters.allIds).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+            expect(stateNew.characters.byId).toEqual({
+                1: { id: 1 },
+                2: { id: 2 },
+                3: { id: 3 },
+                4: { id: 4 },
+                5: { id: 5 },
+                6: { id: 6 },
+                7: { id: 7 },
+                8: { id: 8 }
+            });
         });
         it("should set currentPage", () => {
             const action = changeCurrentPageAC(1);
