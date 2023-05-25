@@ -14,11 +14,14 @@ import {
     SET_STATUS
 } from "./actionTypes";
 import { getGender, getName, getPage, getSpecies, getStatus } from "./selectors";
+import { normalizeData } from "utils/normalizeData";
 
 export const setCharactersAC = characters => {
+    const { byId, allIds } = normalizeData(characters);
     return {
         type: SET_CHARACTERS,
-        characters
+        byId,
+        allIds
     };
 };
 
@@ -52,9 +55,11 @@ export const pageResetAC = () => {
     };
 };
 export const loadMoreAc = characters => {
+    const { byId, allIds } = normalizeData(characters);
     return {
         type: LOAD_MORE,
-        characters
+        byId,
+        allIds
     };
 };
 export const nameAC = name => {
@@ -135,8 +140,8 @@ const _loadCharacters = () => async (dispatch, getState) => {
     // if (characters.status !== 200) {
     //     throw new Error(characters.statusMessage || "Случилась хуйня");
     // }
-   
-//dispatch(speciesAC())
+
+    //dispatch(speciesAC())
     dispatch(setCharactersAC(characters.data.results));
 };
 export const loadCharacters = () => async (dispatch, getState) => {
@@ -150,7 +155,7 @@ const _loadMoreCharacters = () => async (dispatch, getState) => {
     const gender = getGender(getState());
     const status = getStatus(getState());
     const characters = await getCharacters({ page, name, species, gender, status });
-    
+
     dispatch(loadMoreAc(characters.data.results));
 };
 
