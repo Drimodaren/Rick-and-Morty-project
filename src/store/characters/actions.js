@@ -101,7 +101,6 @@ export const asyncThunk =
         try {
             await dispatch(cb(...args));
         } catch (e) {
-            console.log(e);
             dispatch(setErrorsAC(e.message));
         } finally {
             dispatch(setLoadedAC());
@@ -137,14 +136,10 @@ const _loadCharacters = () => async (dispatch, getState) => {
     const gender = getGender(getState());
     const status = getStatus(getState());
     const characters = await getCharacters({ page, name, species, gender, status });
-    // if (characters.status !== 200) {
-    //     throw new Error(characters.statusMessage || "Случилась хуйня");
-    // }
-
-    //dispatch(speciesAC())
     dispatch(setCharactersAC(characters.data.results));
 };
 export const loadCharacters = () => async (dispatch, getState) => {
+    dispatch(pageResetAC());
     dispatch(asyncThunk(_loadCharacters));
 };
 

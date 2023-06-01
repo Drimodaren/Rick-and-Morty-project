@@ -13,7 +13,7 @@ export function SingleCharacter() {
     const params = useParams();
     const id = Number(params.characterId);
     const character = useSelector(state => getCharacterById(state, id));
-    console.log(character);
+
     useEffect(() => {
         if (!character) {
             dispatch(loadCharacter(id));
@@ -24,7 +24,6 @@ export function SingleCharacter() {
     }
     return (
         <div className={style.SingleCharacte}>
-            
             <img src={character.image} alt="cardImage" className={style.cardImage} />
             <h1>{character.name}</h1>
             <div className={style.allInformations}>
@@ -76,4 +75,4 @@ export function SingleCharacter() {
     );
 }
 
-export default withBackButton(SingleCharacter)
+export default withBackButton(SingleCharacter);

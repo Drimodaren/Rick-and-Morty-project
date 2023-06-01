@@ -27,6 +27,5 @@ describe("cardComponent", () => {
         expect(screen.getByTestId("Card-2")).not.toHaveTextContent("Bastard");
         expect(screen.getByTestId("Card-2")).not.toHaveTextContent("111");
         expect(screen.getByTestId("Card-2")).toMatchSnapshot();
-        //expect(screen.getByTestId("Card-2").querySelector('img')).toBeDefined();
     });
 });

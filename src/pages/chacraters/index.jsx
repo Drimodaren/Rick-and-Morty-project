@@ -7,8 +7,8 @@ import { getLoading, getErrors, getCharactersAllIds } from "store/characters/sel
 import style from "./Characters.module.scss";
 import image from "images/Charates_Main.png";
 import LoadMore from "components/UI/LoadMore";
-import Filter from "./filters/Filter";
-import CharacterCard from "./CharacterCard";
+import Filter from "./filters/index.jsx";
+import CharacterCard from "./charactersCard/CharacterCard";
 
 export default function Characters() {
     const dispatch = useDispatch();
@@ -34,8 +34,9 @@ export default function Characters() {
                     <CharacterCard id={item} key={item} />
                 ))}
                 {loading === LOADING_STATE.LOADING && <Spinner />}
-                <LoadMore />
+                
             </div>
+            <LoadMore  />
         </div>
     );
 }

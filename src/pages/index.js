@@ -8,7 +8,7 @@ const MainPage = lazy(()=>import("./MainPage"))
 const Locations = lazy(()=>import("./locations"))
 const Episodes = lazy(()=>import("./episodes"))
 const Characters = lazy(()=>import("./chacraters"))
-const SingleCharacter = lazy(()=>import("./SingleCharacter/SingleCharacter"))
+const SingleCharacter = lazy(()=>import("./SingleCharacter"))
 
 export const route = createBrowserRouter([
     {

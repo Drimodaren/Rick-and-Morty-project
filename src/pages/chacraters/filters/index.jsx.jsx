@@ -1,19 +1,18 @@
 import React from "react";
-import BaseFilterCharacters from "./BaseFilterCharacters";
-import BaseSelectCharacters from "./BaseFilterSelectCharacters";
-import { GENDER, SPECIES, STATUS } from "./constant";
+
+import { GENDER, SPECIES, STATUS } from "./constant.js";
 import style from "./Filter.module.scss";
+import BaseFilterCharacters from "./BaseFilterCharacter/InputCharacter/index.jsx.jsx";
+import BaseSelectCharacters from "./BaseFilterCharacter/SelectCharacter/index.jsx.jsx";
 
 export default function Filter() {
-   
     return (
         <div className="container">
             <div className={style.inputFeld}>
                 <BaseFilterCharacters
                     fieldName="name"
                     placeholder="Name character..."
-                    label= {<span>&#128269; Filter by name...</span>}
-                    
+                    label={<span>&#128269; Filter by name...</span>}
                 />
                 <BaseSelectCharacters fieldName="species" placeholder="Species">
                     {SPECIES.map(item => (

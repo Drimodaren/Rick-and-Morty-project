@@ -12,7 +12,7 @@ export default function MainPage() {
             <div className={style.MainPage}>
                 <div className={style.link}>
                     <NavLink to={ROUTES.CHARACTERS}>
-                        <img src={characterImg} alt="Character main" />
+                        <img src={characterImg} className={style.characterImg} alt="Character main" />
                     </NavLink>
 
                     <h1>CHARACTERS</h1>
@@ -20,13 +20,13 @@ export default function MainPage() {
                 <div className={style.secondDiv}>
                     <div className={style.link}>
                         <NavLink to={ROUTES.EPISODES}>
-                            <img src={episodeImg} alt="Episode main" />
+                            <img src={episodeImg} className={style.episodesImg} alt="Episode main" />
                         </NavLink>
                         <h1> EPISODES</h1>
                     </div>
                     <div className={style.link}>
                         <NavLink to={ROUTES.LOCATIONS}>
-                            <img src={locationImg} alt="Location main" />
+                            <img src={locationImg} className={style.locationImg} alt="Location main" />
                         </NavLink>
                         <h1>LOCATIONS</h1>
                     </div>

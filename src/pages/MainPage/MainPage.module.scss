@@ -1,3 +1,11 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 .mainDiv {
     display: flex;
     justify-content: center;
@@ -14,13 +22,9 @@
     h1 {
         transition: all 0.6s;
         opacity: 0;
-        left: 0;
-        bottom: 0;
-        color: #05f72d;
         text-align: center;
         font-size: 26px;
-        padding: 3px 0;
-        width: 100%;
+        padding: 10px;
         transform: scale(0);
     }
     .link:hover h1 {
@@ -33,10 +37,28 @@
 .secondDiv {
     display: flex;
     gap: 300px;
+
+    .locationImg {
+        animation: spin 10s infinite linear;
+        transition: filter 0.8s linear;
+        filter: drop-shadow(4px 4px 10px var(--main-blueCharacter-color));
+    }
+    .episodesImg:hover {
+        transition: filter 0.9s linear;
+        filter: drop-shadow(4px 4px 10px var(--main-gradBack-color));
+    }
 }
+
 .link {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 10px;
+    img {
+        filter: drop-shadow(4px 4px 15px black);
+    }
+    .characterImg:hover {
+        transition: filter 0.8s ease-in-out;
+        filter: drop-shadow(40px 4px 10px blue);
+    }
 }
