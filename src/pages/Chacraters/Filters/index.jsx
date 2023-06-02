@@ -1,9 +1,9 @@
 import React from "react";
 
-import { GENDER, SPECIES, STATUS } from "./constant.js";
 import style from "./Filter.module.scss";
-import BaseFilterCharacters from "./BaseFilterCharacter/InputCharacter/index.jsx.jsx";
-import BaseSelectCharacters from "./BaseFilterCharacter/SelectCharacter/index.jsx.jsx";
+import BaseFilterCharacters from "./BaseFilterCharacter/InputCharacter/index.jsx";
+import BaseSelectCharacters from "./BaseFilterCharacter/SelectCharacter/index.jsx";
+import { GENDER, SPECIES, STATUS } from "./constant";
 
 export default function Filter() {
     return (

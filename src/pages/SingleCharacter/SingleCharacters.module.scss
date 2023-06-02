@@ -1,35 +1,38 @@
 .SingleCharacte {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 50px;
+    margin: 20px;
+    width: 100%;
+    overflow: hidden;
     h1 {
         margin-bottom: 50px;
         font-size: 48px;
-        line-height: 56px;
     }
 }
 
 .cardImage {
     margin: 20px;
     border-radius: 50%;
-    width: 30%;
+    width: 25%;
     object-fit: cover;
 }
 .allInformations {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-left: 30px;
-    width: 50%;
+    width: 100%;
+    align-items: center;
 }
 .cardInformations {
     display: flex;
-    justify-content: space-around;
-    margin-left: 25px;
-    margin-bottom: 25px;
+    justify-content: space-between;
+    width: 80%;
+    height: 14%;
+    overflow: auto;
+    
 }
+
 .characterInformations {
     display: flex;
     flex-direction: column;
@@ -51,10 +54,9 @@
     flex-direction: column;
     width: 20%;
     gap: 10px;
-    height: 300px;
     line-height: 24px;
     color: var(--main-subtitleCard-color);
-    overflow: auto;
+    
     div {
         font-size: 14px;
         line-height: 20px;
@@ -62,7 +64,8 @@
 }
 .title {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 80%;
 
     h2 {
         filter: var(--main-boxShadow-drop);
@@ -70,4 +73,20 @@
         font-size: 20px;
         color: var(--main-titleCard-color);
     }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }

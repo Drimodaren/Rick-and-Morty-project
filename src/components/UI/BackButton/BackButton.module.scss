@@ -1,8 +1,7 @@
 .backButton {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     align-items: center;
-    width: 9%;
     font-family: "Karla";
     font-weight: 700;
     font-size: 18px;
@@ -10,6 +9,6 @@
     border: 0;
     position: absolute;
     height: 24px;
-    left: 209px;
-    top: 102px;
+    left: 10%;
+    cursor: pointer;
 }
