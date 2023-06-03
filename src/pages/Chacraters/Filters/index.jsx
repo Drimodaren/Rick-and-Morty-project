@@ -1,9 +1,10 @@
 import React from "react";
 
 import style from "./Filter.module.scss";
-import BaseFilterCharacters from "./BaseFilterCharacter/InputCharacter/index.jsx";
-import BaseSelectCharacters from "./BaseFilterCharacter/SelectCharacter/index.jsx";
+import BaseFilterCharacters from "./BaseFilterCharacter/InputCharacter/index.jsx.jsx";
+import BaseSelectCharacters from "./BaseFilterCharacter/SelectCharacter/index.jsx.jsx";
 import { GENDER, SPECIES, STATUS } from "./constant";
+
 
 export default function Filter() {
     return (
@@ -12,7 +13,7 @@ export default function Filter() {
                 <BaseFilterCharacters
                     fieldName="name"
                     placeholder="Name character..."
-                    label={<span>&#128269; Filter by name...</span>}
+                    label={<span>&#128269; Filter by name... </span>}
                 />
                 <BaseSelectCharacters fieldName="species" placeholder="Species">
                     {SPECIES.map(item => (

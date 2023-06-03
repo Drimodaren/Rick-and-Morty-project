@@ -1,7 +1,7 @@
 
 
 
-export default function Episodes() {
+export default function Episodes({}) {
 
     
     return 

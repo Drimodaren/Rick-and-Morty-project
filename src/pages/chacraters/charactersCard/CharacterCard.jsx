@@ -1,7 +1,7 @@
 import Card from "components/UI/Card";
 import React from "react";
 import { useSelector } from "react-redux";
-import { getCharacterById } from "store/Characters/selectors";
+import { getCharacterById } from "store/characters/selectors";
 
 export default function CharacterCard({ id }) {
     const item = useSelector(state => getCharacterById(state, id));
