@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCharacterById } from "../../store/characters/selectors";
-import { loadCharacter } from "../../store/characters/actions";
+import { getCharacterById } from "../../store/Characters/selectors";
+import { loadCharacter } from "../../store/Characters/actions";
 import { Spinner } from "../../components/UI/Spinner";
 import style from "./SingleCharacters.module.scss";
 import EpisodesCharacter from "components/UI/EpisodesCharacter";

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FilterInput from "components/UI/Filter/FilterInput";
-import { changeFilterThunk } from "store/characters/actions";
+import { changeFilterThunk } from "store/Characters/actions";
 
 export default function BaseFilterCharacters({ fieldName, placeholder, label }) {
     const dispatch = useDispatch();

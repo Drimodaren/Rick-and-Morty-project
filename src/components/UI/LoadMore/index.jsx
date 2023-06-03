@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./LoadMore.module.scss";
 import { useDispatch } from "react-redux";
-import { loadMoreCharacters } from "store/characters/actions";
+import { loadMoreCharacters } from "store/Characters/actions";
 
 export default function LoadMore() {
     const dispatch = useDispatch();

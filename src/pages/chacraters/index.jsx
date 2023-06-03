@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "components/UI/Spinner";
-import { loadCharacters } from "store/characters/actions";
-import { LOADING_STATE } from "store/characters/constans";
-import { getLoading, getErrors, getCharactersAllIds } from "store/characters/selectors";
+import { loadCharacters } from "store/Characters/actions";
+import { LOADING_STATE } from "store/Characters/constans";
+import { getLoading, getErrors, getCharactersAllIds } from "store/Characters/selectors";
 import style from "./Characters.module.scss";
 import image from "images/Charates_Main.png";
 import LoadMore from "components/UI/LoadMore";
@@ -34,9 +34,8 @@ export default function Characters() {
                     <CharacterCard id={item} key={item} />
                 ))}
                 {loading === LOADING_STATE.LOADING && <Spinner />}
-                
             </div>
-            <LoadMore  />
+            <LoadMore />
         </div>
     );
 }
