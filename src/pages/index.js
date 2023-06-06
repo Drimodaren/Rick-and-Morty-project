@@ -7,7 +7,7 @@ import { lazy } from "react";
 const MainPage = lazy(()=>import("./MainPage"))
 const Locations = lazy(()=>import("./Locations"))
 const Episodes = lazy(()=>import("./Episodes"))
-const Characters = lazy(()=>import("./Chacraters"))
+const Characters = lazy(()=>import("./Characters"))
 const SingleCharacter = lazy(()=>import("./SingleCharacter"))
 
 export const route = createBrowserRouter([

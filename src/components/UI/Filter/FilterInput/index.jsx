@@ -11,7 +11,7 @@ export default function FilterInput({ value, label, placeholder, handleFilterNam
         setLabelPosition(value === "");
     };
     return (
-        <div className={style.form_feld} onFocus={handleOnFocus} onBlur={handleOnBlur}>
+        <div className={style.form_field} onFocus={handleOnFocus} onBlur={handleOnBlur}>
             <input
                 id="inputFilter"
                 type="text"

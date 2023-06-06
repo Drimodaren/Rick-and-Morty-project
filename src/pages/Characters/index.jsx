@@ -8,7 +8,7 @@ import style from "./Characters.module.scss";
 import image from "images/Charates_Main.png";
 import LoadMore from "components/UI/LoadMore";
 import Filter from "./Filters/index.jsx";
-import CharacterCard from "./CharactersCard/CharacterCard";
+import CharacterCard from "./CharacterCard";
 
 export default function Characters() {
     const dispatch = useDispatch();

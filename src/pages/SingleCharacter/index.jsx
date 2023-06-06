@@ -6,7 +6,7 @@ import { loadCharacter } from "../../store/characters/actions";
 import { Spinner } from "../../components/UI/Spinner";
 import style from "./SingleCharacters.module.scss";
 import EpisodesCharacter from "components/UI/EpisodesCharacter";
-import { withBackButton } from "components/UI/BackButton/withBackButton";
+import { WithBackButton } from "components/UI/BackButton/WithBackButton";
 
 export function SingleCharacter() {
     const dispatch = useDispatch();
@@ -75,4 +75,4 @@ export function SingleCharacter() {
     );
 }
 
-export default withBackButton(SingleCharacter);
+export default WithBackButton(SingleCharacter);

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FilterInput from "components/UI/Filter/FilterInput";
 import { changeFilterThunk } from "store/characters/actions";
 
-export default function BaseFilterCharacters({ fieldName, placeholder, label }) {
+export default function BaseInputFilterCharacters({ fieldName, placeholder, label }) {
     const dispatch = useDispatch();
     const value = useSelector(state => state.character.form[fieldName]);
 
