@@ -26,48 +26,65 @@ export function SingleCharacter() {
         <div className={style.SingleCharacte}>
             <img src={character.image} alt="cardImage" className={style.cardImage} />
             <h1>{character.name}</h1>
+
             <div className={style.allInformations}>
-                <div className={style.title}>
-                    <h2>Informations</h2>
-                    <h2>Episodes</h2>
-                </div>
-                <div className={style.cardInformations}>
-                    <div className={style.characterInformations}>
-                        <div>
-                            <h3>Gender</h3>
-                            <p>{character.name}</p>
-                        </div>
-                        <div>
-                            <h3>Status</h3>
-                            <p>{character.status}</p>
-                        </div>
-                        <div>
-                            <h3>Specie</h3>
-                            <p>{character.species}</p>
-                        </div>
-                        <div>
-                            <h3>Origin</h3>
-                            <p>{character.origin.name}</p>
-                        </div>
-                        <div>
-                            <h3>Type</h3>
-                            <p>{character.type}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
+                <div className={style.informationsPart}>
+                    <span>Informations</span>
+                    <div className={style.CardInformations}>
+                    <div>
+                        <h3>Gender</h3>
+                        <p>{character.gender}</p>
                     </div>
-                    <div className={style.cardEpisodes}>
-                        {character.episode.map(item => (
-                            <EpisodesCharacter
-                                key={item}
-                                url={item}
-                                // episode={item.episode}
-                                // name={item.name}
-                                // air_date={item.air_date}
-                            />
-                        ))}
+                    <div>
+                        <h3>Status</h3>
+                        <p>{character.status}</p>
+                    </div>
+                    <div>
+                        <h3>Specie</h3>
+                        <p>{character.species}</p>
+                    </div>
+                    <div>
+                        <h3>Origin</h3>
+                        <p>{character.origin.name}</p>
+                    </div>
+                    <div>
+                        <h3>Type</h3>
+                        <p>{character.type}</p>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>{character.location.name}</p>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>{character.location.name}</p>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>{character.location.name}</p>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>{character.location.name}</p>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>{character.location.name}</p>
+                    </div>
+                </div>
+                </div>
+                <div className={style.informationsPart}>
+                    <span>Episodes</span>
+                    <div className={style.CardInformations}>
+                    {character.episode.map(item => (
+                        <EpisodesCharacter
+                            key={item}
+                            url={item}
+                            // episode={item.episode}
+                            // name={item.name}
+                            // air_date={item.air_date}
+                        />
+                    ))}
                     </div>
                 </div>
             </div>

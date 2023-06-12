@@ -9,13 +9,18 @@ export default function Header() {
     return (
         <header className={style.header}>
             <div className="container">
-                <Logo/>
-               
+                <Logo />
 
                 <div className={style.link}>
-                    <NavLink to={ROUTES.CHARACTERS}>Characters</NavLink>
-                    <NavLink to={ROUTES.LOCATIONS}>Location</NavLink>
-                    <NavLink to={ROUTES.EPISODES}>Episodes</NavLink>
+                    <div>
+                        <NavLink to={ROUTES.CHARACTERS}>Characters</NavLink>
+                    </div>
+                    <div>
+                        <NavLink to={ROUTES.LOCATIONS}>Location</NavLink>
+                    </div>
+                    <div>
+                        <NavLink to={ROUTES.EPISODES}>Episodes</NavLink>
+                    </div>
                 </div>
             </div>
         </header>

@@ -2,5 +2,23 @@
     height: 60px;
     display: flex;
     justify-content: center;
-    box-shadow: -2px 0px 9px 3px var(--main-box-color);
+    align-items: center;
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        :nth-child(2) {
+            justify-content: center;
+            width: 20%;
+            gap: 5px;
+        }
+        p {
+            font-size: 2em;
+        }
+    }
+    box-shadow: -2px 0px 8px 3px var(--main-box-color);
+}
+.link {
+    gap: 5px;
+    display: flex;
 }

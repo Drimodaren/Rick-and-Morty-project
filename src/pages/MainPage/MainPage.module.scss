@@ -55,10 +55,10 @@
     justify-content: center;
     margin: 10px;
     img {
-        filter: drop-shadow(4px 4px 15px black);
+        filter: drop-shadow(4px 4px 25px black);
     }
     .characterImg:hover {
         transition: filter 0.8s ease-in-out;
-        filter: drop-shadow(40px 4px 10px blue);
+        filter: drop-shadow(40px 4px 10px var(--main-blueCharacter-color));
     }
 }

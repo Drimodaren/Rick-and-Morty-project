@@ -2,24 +2,16 @@
     margin: 0;
     padding: 0;
 }
-* { outline: 2px dotted red; }
-* * { outline: 2px dotted green; }
-* * * { outline: 2px dotted orange; }
-* * * * { outline: 2px dotted blue; }
-* * * * * { outline: 1px solid red; }
-* * * * * * { outline: 1px solid green; }
-* * * * * * * { outline: 1px solid orange; }
-* * * * * * * * { outline: 1px solid blue; }
 
 :root {
     --main-bg-color: white;
     --main-text-color: black;
     --main-box-color: rgba(0, 0, 0, 0.5);
-    --main-grad-color: linear-gradient(rgb(24, 155, 182), rgb(146, 255, 120));
-    --main-gradBack-color: linear-gradient(rgb(146, 255, 120), rgb(24, 155, 182));
-    --main-blueCharacter-color: blue;
-    --main-titleCard-color: #8e8e93;
-    --main-subtitleCard-color: #081f32;
+    --main-grad-color: linear-gradient(rgb(24, 155, 182), 80%, rgb(146, 255, 120));
+    --main-gradBack-color: linear-gradient(rgb(146, 255, 120), 30%, rgb(24, 155, 182));
+    --main-blueCharacter-color: rgb(146, 255, 120);
+    --main-titleCard-color: #38383c;
+    --main-subtitleCard-color: black;
     --main-boxShadow-drop: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     --main-border-color: #bdbdbd;
 }
@@ -46,6 +38,11 @@ body {
         font-weight: 700;
         line-height: 21px;
         letter-spacing: 0.25px;
+    }
+    a {
+        text-decoration: none;
+        color: var(--main-text-color);
+        font-size: 1.3em;
     }
 }
 
