@@ -1,24 +1,12 @@
 .footer {
-    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 60px;
+    box-shadow: -2px 0px 8px 3px var(--main-box-color);
     div {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        :nth-child(2) {
-            justify-content: center;
-            width: 20%;
-            gap: 5px;
-        }
-        p {
-            font-size: 2em;
-        }
+        justify-content: start;
     }
-    box-shadow: -2px 0px 8px 3px var(--main-box-color);
-}
-.link {
-    gap: 5px;
-    display: flex;
+  
 }
