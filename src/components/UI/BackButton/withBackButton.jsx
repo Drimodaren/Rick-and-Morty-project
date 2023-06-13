@@ -1,5 +1,9 @@
-import BackButton from "."
+import BackButton from ".";
 
-export const WithBackButton =(Component)=>(props)=>{
-return <> <BackButton/> <Component {...props}/> </> 
-}
+export const withBackButton = Component => props => {
+    return (
+        <>
+            <BackButton /> <Component {...props} />{" "}
+        </>
+    );
+};
