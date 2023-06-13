@@ -1,0 +1,12 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    box-shadow: -2px 0px 8px 3px var(--main-box-color);
+    div {
+        display: flex;
+        justify-content: start;
+    }
+  
+}

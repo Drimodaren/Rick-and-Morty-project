@@ -1,21 +1,22 @@
 import React from "react";
-import style from "./header.module.scss";
-import logo from "../../../images/logo.png";
-import { NavLink } from "react-router-dom";
+import style from "./Header.module.scss";
+
 import { ROUTES } from "../../../pages/constant";
+import Logo from "components/UI/Logo";
+import NavLinkButton from "components/UI/NavLinkButton";
 
 export default function Header() {
     return (
         <header className={style.header}>
             <div className="container">
-                <NavLink to={ROUTES.MAIN}>
-                    <img src={logo} alt="" />
-                </NavLink>
+                <Logo />
 
                 <div className={style.link}>
-                    <NavLink to={ROUTES.CHARACTERS}>Characters</NavLink>
-                    <NavLink to={ROUTES.LOCATIONS}>Location</NavLink>
-                    <NavLink to={ROUTES.EPISODES}>Episodes</NavLink>
+                    <NavLinkButton  to={ROUTES.CHARACTERS}>Characters</NavLinkButton>
+
+                    <NavLinkButton to={ROUTES.LOCATIONS}>Location</NavLinkButton>
+
+                    <NavLinkButton to={ROUTES.EPISODES}>Episodes</NavLinkButton>
                 </div>
             </div>
         </header>

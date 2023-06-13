@@ -5,10 +5,10 @@ import { ROUTES } from "./constant";
 
 import { lazy } from "react";
 const MainPage = lazy(()=>import("./MainPage"))
-const Locations = lazy(()=>import("./locations"))
-const Episodes = lazy(()=>import("./episodes"))
-const Characters = lazy(()=>import("./chacraters"))
-const SingleCharacter = lazy(()=>import("./SingleCharacter/SingleCharacter"))
+const Locations = lazy(()=>import("./Locations"))
+const Episodes = lazy(()=>import("./Episodes"))
+const Characters = lazy(()=>import("./Characters"))
+const SingleCharacter = lazy(()=>import("./SingleCharacter"))
 
 export const route = createBrowserRouter([
     {

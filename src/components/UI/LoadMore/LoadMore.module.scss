@@ -1,4 +1,8 @@
 .button {
-    height: 36px;
-    width: 154px;
+    padding: 10px;
+    position: sticky;
+    bottom: 11px;
+    background: var(--main-gradBack-color);
+    font-weight: 700;
+    border-radius: 10px;
 }

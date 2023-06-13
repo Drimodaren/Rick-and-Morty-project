@@ -1,21 +1,54 @@
-
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
-h1,h2,h3 {
-  margin: 0;
-  padding: 0;
-}
-
 
 :root {
     --main-bg-color: white;
     --main-text-color: black;
-    --main-box-color:rgba(0, 0, 0, 0.5)
+    --main-box-color: rgba(0, 0, 0, 0.5);
+    --main-grad-color: linear-gradient(rgb(24, 155, 182), 80%, rgb(146, 255, 120));
+    --main-gradBack-color: linear-gradient(rgb(146, 255, 120), 30%, rgb(24, 155, 182));
+    --main-blueCharacter-color: rgb(146, 255, 120);
+    --main-titleCard-color: #38383c;
+    --main-subtitleCard-color: black;
+    --main-boxShadow-drop: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    --main-border-color: #bdbdbd;
+}
+body {
+    background: var(--main-grad-color);
+    font-style: normal;
+    font-family: "Roboto";
+    color: var(--main-text-color);
+
+    h1 {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 30px;
+        letter-spacing: 0.15px;
+    }
+    h2 {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.25px;
+    }
+    h3 {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        letter-spacing: 0.25px;
+    }
+    a {
+        text-decoration: none;
+        color: var(--main-text-color);
+        font-size: 1.3em;
+    }
 }
 
 .container {
-  width:  1200px;
-  padding: 15px;
+    width: 1200px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
 }

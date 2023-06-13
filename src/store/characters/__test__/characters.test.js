@@ -35,17 +35,15 @@ describe("charactersReducer", () => {
             expect(mockDispatch).toHaveBeenCalledWith(setLoadedAC());
         });
         it("should load initial characters", async () => {
-            //тест асинхронный
             const response = {
-                //готовим данные
                 data: {
                     results: [{ id: 1 }, { id: 2 }]
                 }
             };
-            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response)); //подменяем данные, см. выше импорт и jest.mock("rickmortyapi");
-            await store.dispatch(loadCharacters()); //await обязательно
+            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response)); 
+            await store.dispatch(loadCharacters()); 
 
-            expect(getCharactersAllIds(store.getState())).toHaveLength(2); //тут будет новый результат
+            expect(getCharactersAllIds(store.getState())).toHaveLength(2); 
         });
     });
 
