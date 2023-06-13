@@ -17,15 +17,4 @@
     align-items: center;
     width: 30%;
     height: 40px;
-    div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--main-gradBack-color);
-        border: 3px solid var(--main-box-color);
-        border-radius: 5px;
-        width: 80%;
-        height: 100%;
-       
-    }
 }

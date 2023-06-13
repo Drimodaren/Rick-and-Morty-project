@@ -6,7 +6,7 @@ import style from "./Logo.module.scss"
 
 export default function Logo() {
     return (
-        <NavLink to={ROUTES.MAIN} className={style}>
+        <NavLink to={ROUTES.MAIN} >
             <img src={logo} alt="" />
         </NavLink>
     );
