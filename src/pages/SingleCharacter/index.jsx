@@ -55,22 +55,6 @@ export function SingleCharacter() {
                             <h3>Location</h3>
                             <p>{character.location.name}</p>
                         </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
                     </div>
                 </div>
                 <div className={style.informationsPart}>

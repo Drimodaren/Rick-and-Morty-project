@@ -4,12 +4,12 @@ import Layout from "../components/Layout";
 import { ROUTES } from "./constant";
 
 import { lazy } from "react";
-const MainPage = lazy(()=>import("./MainPage"))
-const Locations = lazy(()=>import("./Locations"))
-const Episodes = lazy(()=>import("./Episodes"))
-const Characters = lazy(()=>import("./Characters"))
-const SingleCharacter = lazy(()=>import("./SingleCharacter"))
-
+const MainPage = lazy(() => import("./MainPage"));
+const Locations = lazy(() => import("./Locations"));
+const Episodes = lazy(() => import("./Episodes"));
+const Characters = lazy(() => import("./Characters"));
+const SingleCharacter = lazy(() => import("./SingleCharacter"));
+const SingleLocation = lazy(() => import("./SingleLocation"));
 export const route = createBrowserRouter([
     {
         element: <Layout />,
@@ -22,7 +22,7 @@ export const route = createBrowserRouter([
                 children: [
                     { path: ROUTES.CHARACTERS, element: <Characters /> },
                     {
-                        path: ":characterId",
+                        path: "/characters/:characterId",
                         element: <SingleCharacter />
                     }
                 ]
@@ -32,8 +32,13 @@ export const route = createBrowserRouter([
                 element: <Episodes />
             },
             {
-                path: ROUTES.LOCATIONS,
-                element: <Locations />
+                children: [
+                    { path: ROUTES.LOCATIONS, element: <Locations /> },
+                    {
+                        path: "/locations/:locationId",
+                        element: <SingleLocation />
+                    }
+                ]
             }
         ]
     }
