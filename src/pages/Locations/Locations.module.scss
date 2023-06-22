@@ -4,6 +4,9 @@
     gap: 20px;
     align-items: center;
     padding-bottom: 20px;
+    p{
+        font-size: 2em;
+    }
     a {
         font-size: 1em;
     }
@@ -12,7 +15,7 @@
         display: flex;
         justify-content: center;
         gap: 30px;
-        width: 92%;
+        
         height: 56px;
     }
 }
@@ -21,4 +24,13 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        h1 {
+            font-size: 1em;
+        }
+    }
 }

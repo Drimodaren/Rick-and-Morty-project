@@ -7,3 +7,4 @@ export const getPage = state => state.locations.currentPage;
 export const getLoading = state => state.locations.loading;
 export const getErrors = state => state.locations.errors;
 export const getLocationById = (state, id) => getLocationsById(state)[id];
+export const getLoadingResidents = state => state.locations.loadingResedents;

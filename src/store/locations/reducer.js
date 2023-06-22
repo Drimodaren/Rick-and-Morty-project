@@ -5,8 +5,10 @@ import {
     LOAD_MORE,
     PAGE_RESET,
     SET_LOADED,
+    SET_LOADED_RESIDENTS,
     SET_LOADING,
-    SET_LOCATIONS
+    SET_LOCATIONS,
+    SET_RESET_RESIDENTS
 } from "./actionTypes";
 import { LOADING_STATE } from "./constans";
 import { INITIAL_STATE } from "./initialState";
@@ -27,6 +29,16 @@ export const locationsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: LOADING_STATE.LOADED
+            };
+        case SET_LOADED_RESIDENTS:
+            return {
+                ...state,
+                loadingResedents: LOADING_STATE.LOADED
+            };
+        case SET_RESET_RESIDENTS:
+            return {
+                ...state,
+                loadingResedents: LOADING_STATE.NEVER
             };
         case ERRORS_LOCATIONS:
             return {

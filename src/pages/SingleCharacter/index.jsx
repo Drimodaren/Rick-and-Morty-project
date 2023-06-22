@@ -19,6 +19,7 @@ export function SingleCharacter() {
             dispatch(loadCharacter(id));
         }
     }, [character, dispatch, id]);
+
     if (!character) {
         return <Spinner />;
     }

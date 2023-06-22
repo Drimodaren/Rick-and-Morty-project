@@ -5,7 +5,8 @@ import { getCharacterById } from "store/characters/selectors";
 
 export default function CharacterCard({ id }) {
     const item = useSelector(state => getCharacterById(state, id));
-    
+
+   
     return (
         <Card
             url={item.url}
@@ -14,7 +15,7 @@ export default function CharacterCard({ id }) {
             info={item.info}
             image={item.image}
             id={item.id}
-            type={'/characters'}
+            type={"/characters"}
         />
     );
 }

@@ -1,5 +1,5 @@
 import { normalizeData } from "utils/normalizeData";
-import { getLocation, getLocations } from "rickmortyapi";
+import { getCharacter, getLocation, getLocations } from "rickmortyapi";
 import {
     CHANGE_CURRENT_PAGE,
     CHANGE_FORM_FIELD,
@@ -7,10 +7,13 @@ import {
     LOAD_MORE,
     PAGE_RESET,
     SET_LOADED,
+    SET_LOADED_RESIDENTS,
     SET_LOADING,
-    SET_LOCATIONS
+    SET_LOCATIONS,
+    SET_RESET_RESIDENTS
 } from "./actionTypes";
 import { getDimension, getName, getPage, getType } from "./selectors";
+import { setCharactersAC } from "store/characters/actions";
 
 export const setLocationsAC = locations => {
     const { byId, allIds } = normalizeData(locations);
@@ -29,6 +32,16 @@ export const setLoadingAC = () => {
 export const setLoadedAC = () => {
     return {
         type: SET_LOADED
+    };
+};
+export const setLoadedResidentsAC = () => {
+    return {
+        type: SET_LOADED_RESIDENTS
+    };
+};
+export const setResetResidentsAC = () => {
+    return {
+        type: SET_RESET_RESIDENTS
     };
 };
 
@@ -130,8 +143,15 @@ export const loadMoreLocations = () => async (dispatch, getState) => {
 };
 
 const _loadLocation = id => async (dispatch, getState) => {
+    dispatch(setResetResidentsAC());
     const location = await getLocation(id);
     dispatch(setLocationsAC([location.data]));
+    const residents = location.data.residents.map(item => Number(item.split("/").at(-1)));
+    const charactersLocation = await getCharacter(residents);
+    dispatch(
+        setCharactersAC(Array.isArray(charactersLocation.data) ? charactersLocation.data : [charactersLocation.data])
+    );
+    dispatch(setLoadedResidentsAC());
 };
 export const loadLocation = id => async (dispatch, getState) => {
     dispatch(asyncThunk(_loadLocation, id));

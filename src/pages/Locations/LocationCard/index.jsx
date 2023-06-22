@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getLocationById } from "store/locations/selectors";
 
+
 export default function LocationCard({ id }) {
     const item = useSelector(state => getLocationById(state, id));
 
