@@ -3,8 +3,8 @@
 exports[`cardComponent should render card with image 1`] = `
 <a
   class="Card CardImage"
-  data-testid="Card-2"
-  href="/2"
+  data-testid="Card-3"
+  href="/cardHref/3"
 >
   <img
     alt="Card"
@@ -22,8 +22,8 @@ exports[`cardComponent should render card with image 1`] = `
 exports[`cardComponent should render card withOut image 1`] = `
 <a
   class="Card"
-  data-testid="Card-2"
-  href="/2"
+  data-testid="Card-3"
+  href="/cardHref/3"
 >
   <h1>
     Rick

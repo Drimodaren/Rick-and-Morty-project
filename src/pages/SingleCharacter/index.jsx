@@ -19,6 +19,7 @@ export function SingleCharacter() {
             dispatch(loadCharacter(id));
         }
     }, [character, dispatch, id]);
+
     if (!character) {
         return <Spinner />;
     }
@@ -50,22 +51,6 @@ export function SingleCharacter() {
                         <div>
                             <h3>Type</h3>
                             <p>{character.type}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>{character.location.name}</p>
                         </div>
                         <div>
                             <h3>Location</h3>

@@ -60,7 +60,7 @@ export const loadMoreAc = characters => {
         type: LOAD_MORE,
         byId,
         allIds
-    };
+    }; 
 };
 export const nameAC = name => {
     return {
