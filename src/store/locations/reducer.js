@@ -1,4 +1,5 @@
 import {
+    All_LOCATIONS_COUNT,
     CHANGE_CURRENT_PAGE,
     CHANGE_FORM_FIELD,
     ERRORS_LOCATIONS,
@@ -68,6 +69,11 @@ export const locationsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 form: { ...state.form, [action.fieldName]: action.value }
             };
+            case All_LOCATIONS_COUNT:
+                return {
+                    ...state,
+                    allLocationsCount:action.count
+                }
         default:
             return state;
     }

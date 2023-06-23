@@ -6,7 +6,7 @@ import style from "./Locations.module.scss";
 import image from "images/Lockation_Main.png";
 import LoadMore from "components/UI/LoadMore";
 import { loadLocations, loadMoreLocations } from "store/locations/actions";
-import { getErrors, getLoading, getLocationsAllIds } from "store/locations/selectors";
+import { getAllLocationsCount, getErrors, getLoading, getLocationsAllIds } from "store/locations/selectors";
 import LocationCard from "./LocationCard";
 import FilterLocations from "./Filters";
 import RandomCard from "components/UI/RandomCard";
@@ -15,6 +15,7 @@ export default function Locations() {
     const locationsIds = useSelector(getLocationsAllIds);
     const loading = useSelector(getLoading);
     const error = useSelector(getErrors);
+    const maxCard = useSelector(getAllLocationsCount)
 
     useEffect(() => {
         dispatch(loadLocations());
@@ -25,7 +26,7 @@ export default function Locations() {
     return (
         <div className={style.locations}>
             <img src={image} alt="Locations" />
-            <RandomCard fineText={"let's go in and out Morty, 20 minute adventure"} maxCard={locationsIds.length} />
+            <RandomCard fineText={"let's go in and out Morty, 20 minute adventure"} maxCard={maxCard} />
             <div>
                 <FilterLocations />
             </div>

@@ -1,6 +1,7 @@
 import { normalizeData } from "utils/normalizeData";
 import { getCharacter, getLocation, getLocations } from "rickmortyapi";
 import {
+    All_LOCATIONS_COUNT,
     CHANGE_CURRENT_PAGE,
     CHANGE_FORM_FIELD,
     ERRORS_LOCATIONS,
@@ -61,6 +62,12 @@ export const changeCurrentPageAC = () => {
         type: CHANGE_CURRENT_PAGE
     };
 };
+export const setAllLocationsCount = count => {
+    return {
+        type: All_LOCATIONS_COUNT,
+        count
+    };
+};
 export const loadMoreAc = characters => {
     const { byId, allIds } = normalizeData(characters);
     return {
@@ -118,8 +125,8 @@ const _loadLocations = () => async (dispatch, getState) => {
     const name = getName(getState());
     const type = getType(getState());
     const dimension = getDimension(getState());
-
     const locations = await getLocations({ page, name, type, dimension });
+    dispatch(setAllLocationsCount(locations.data.info.count));
     dispatch(setLocationsAC(locations.data.results));
 };
 export const loadLocations = () => async (dispatch, getState) => {

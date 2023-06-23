@@ -6,6 +6,7 @@ export const INITIAL_STATE = {
     loadingResedents: LOADING_STATE.NEVER,
     errors: "",
     currentPage: 1,
+    allLocationsCount:0,
     form: {
         name: "",
         type: "",

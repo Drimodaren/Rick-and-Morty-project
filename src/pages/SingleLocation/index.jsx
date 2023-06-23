@@ -28,7 +28,7 @@ export function SingleLocation() {
     }
 
     const residents = location?.residents.map(item => Number(item.split("/").at(-1))) ?? [];
-    console.log(residents);
+
     return (
         <div className={style.singleLocationMain}>
             <div className={style.singleLocationTitle}>
