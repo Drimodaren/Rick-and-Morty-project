@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "components/UI/Spinner";
@@ -10,13 +9,13 @@ import { loadLocations, loadMoreLocations } from "store/locations/actions";
 import { getErrors, getLoading, getLocationsAllIds } from "store/locations/selectors";
 import LocationCard from "./LocationCard";
 import FilterLocations from "./Filters";
-import { NavLink } from "react-router-dom";
+import RandomCard from "components/UI/RandomCard";
 export default function Locations() {
     const dispatch = useDispatch();
     const locationsIds = useSelector(getLocationsAllIds);
     const loading = useSelector(getLoading);
     const error = useSelector(getErrors);
-    const randomID = Math.floor(Math.random() * (100 - 1)) * 1;
+
     useEffect(() => {
         dispatch(loadLocations());
     }, [dispatch]);
@@ -26,9 +25,7 @@ export default function Locations() {
     return (
         <div className={style.locations}>
             <img src={image} alt="Locations" />
-            <NavLink to={`${randomID}`}>
-                <p>"let's go in and out Morty, 20 minute adventure"</p>
-            </NavLink>
+            <RandomCard fineText={"let's go in and out Morty, 20 minute adventure"} maxCard={locationsIds.length} />
             <div>
                 <FilterLocations />
             </div>
