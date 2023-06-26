@@ -1,15 +1,11 @@
-import { LOADING_STATE } from "./constans";
+import { INITIAL_STATE as sharedInitialState } from "../shared/initialState";
 
 export const INITIAL_STATE = {
-    characters: {byId:{}, allIds:[]},
-    loading: LOADING_STATE.NEVER,
-    errors: "",
-    currentPage:1,
+    ...sharedInitialState,
     form: {
         name: "",
         species: "",
         gender: "",
         status: ""
-    },
-    speciec:[]
+    }
 };

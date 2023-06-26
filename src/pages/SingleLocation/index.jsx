@@ -7,7 +7,7 @@ import { withBackButton } from "components/UI/BackButton/withBackButton";
 import { getLoadingResidents, getLocationById } from "store/locations/selectors";
 import { loadLocation, setResetResidentsAC } from "store/locations/actions";
 import CharacterCard from "pages/Characters/CharacterCard";
-import { LOADING_STATE } from "store/locations/constans";
+import { LOADING_STATE } from "store/shared/loadingState";
 
 export function SingleLocation() {
     const dispatch = useDispatch();

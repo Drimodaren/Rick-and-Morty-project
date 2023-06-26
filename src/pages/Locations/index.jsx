@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "components/UI/Spinner";
-import { LOADING_STATE } from "store/locations/constans";
+import { LOADING_STATE } from "store/shared/loadingState";
 import style from "./Locations.module.scss";
 import image from "images/Lockation_Main.png";
 import LoadMore from "components/UI/LoadMore";
@@ -15,7 +15,7 @@ export default function Locations() {
     const locationsIds = useSelector(getLocationsAllIds);
     const loading = useSelector(getLoading);
     const error = useSelector(getErrors);
-    const maxCard = useSelector(getAllLocationsCount)
+    const maxCard = useSelector(getAllLocationsCount);
 
     useEffect(() => {
         dispatch(loadLocations());

@@ -1,15 +1,15 @@
 import { setupStore } from "../..";
 import {
     changeCurrentPageAC,
-    loadMoreAc,
+    updateDataAC as loadMoreAc,
     loadCharacters,
-    setCharactersAC,
+    firstLoadingDataAC as setCharactersAC,
     setErrorsAC,
     setLoadedAC,
     setLoadingAC,
     asyncThunk
 } from "../actions";
-import { LOADING_STATE } from "../constans";
+import { LOADING_STATE } from "../../shared/loadingState";
 import { INITIAL_STATE } from "../initialState";
 import { characterReducer } from "../reducer";
 import { getCharactersAllIds, getCharactersById, getErrors, getLoading, getPage } from "../selectors";
@@ -40,10 +40,10 @@ describe("charactersReducer", () => {
                     results: [{ id: 1 }, { id: 2 }]
                 }
             };
-            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response)); 
-            await store.dispatch(loadCharacters()); 
+            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response));
+            await store.dispatch(loadCharacters());
 
-            expect(getCharactersAllIds(store.getState())).toHaveLength(2); 
+            expect(getCharactersAllIds(store.getState())).toHaveLength(2);
         });
     });
 
@@ -53,8 +53,8 @@ describe("charactersReducer", () => {
         });
         it("should return all characters", () => {
             const store = setupStore({
-                character: {
-                    characters: { byId: { 1: { id: 1 }, 2: { id: 2 } }, allIds: [1, 2] }
+                characters: {
+                    entities: { byId: { 1: { id: 1 }, 2: { id: 2 } }, allIds: [1, 2] }
                 }
             });
             expect(getCharactersById(store.getState())).toEqual({ 1: { id: 1 }, 2: { id: 2 } });
@@ -70,7 +70,7 @@ describe("charactersReducer", () => {
         });
         it("should return loading", () => {
             const store = setupStore({
-                character: {
+                characters: {
                     loading: LOADING_STATE.NEVER
                 }
             });
@@ -82,7 +82,7 @@ describe("charactersReducer", () => {
         });
         it("should return errors", () => {
             const store = setupStore({
-                character: {
+                characters: {
                     errors: "Olo-lo"
                 }
             });
@@ -92,7 +92,7 @@ describe("charactersReducer", () => {
         });
         it("should return page", () => {
             const store = setupStore({
-                character: {
+                characters: {
                     currentPage: 1
                 }
             });
@@ -107,16 +107,16 @@ describe("charactersReducer", () => {
             expect(state).toEqual(INITIAL_STATE);
             expect(state.loading).toBe(LOADING_STATE.NEVER);
             expect(state.errors).toBe("");
-            expect(state.characters.allIds).toHaveLength(0);
+            expect(state.entities.allIds).toHaveLength(0);
             expect(state.currentPage).toEqual(1);
         });
         it("should set characters", () => {
             const action = setCharactersAC([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
             const state = characterReducer(INITIAL_STATE, action);
-            expect(state.characters.allIds).toHaveLength(4);
-            expect(state.characters.allIds).toEqual([1, 2, 3, 4]);
-            expect(state.characters.allIds).toContain(1);
-            expect(state.characters.byId).toEqual({ 1: { id: 1 }, 2: { id: 2 }, 3: { id: 3 }, 4: { id: 4 } });
+            expect(state.entities.allIds).toHaveLength(4);
+            expect(state.entities.allIds).toEqual([1, 2, 3, 4]);
+            expect(state.entities.allIds).toContain(1);
+            expect(state.entities.byId).toEqual({ 1: { id: 1 }, 2: { id: 2 }, 3: { id: 3 }, 4: { id: 4 } });
         });
         it("should set loading", () => {
             const action = setLoadingAC();
@@ -138,8 +138,8 @@ describe("charactersReducer", () => {
             const stateOld = characterReducer(INITIAL_STATE, actionOld);
             const actionNew = loadMoreAc([{ id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }]);
             const stateNew = characterReducer(stateOld, actionNew);
-            expect(stateNew.characters.allIds).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-            expect(stateNew.characters.byId).toEqual({
+            expect(stateNew.entities.allIds).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+            expect(stateNew.entities.byId).toEqual({
                 1: { id: 1 },
                 2: { id: 2 },
                 3: { id: 3 },
