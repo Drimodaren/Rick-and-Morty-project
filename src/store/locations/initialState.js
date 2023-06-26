@@ -1,12 +1,10 @@
-import { LOADING_STATE } from "./constans";
+import { LOADING_STATE } from "../shared/loadingState";
+import { INITIAL_STATE as sharedInitialState } from "../shared/initialState";
 
 export const INITIAL_STATE = {
-    locations: { byId: {}, allIds: [] },
-    loading: LOADING_STATE.NEVER,
+    ...sharedInitialState,
     loadingResedents: LOADING_STATE.NEVER,
-    errors: "",
-    currentPage: 1,
-    allLocationsCount:0,
+    allLocationsCount: 0,
     form: {
         name: "",
         type: "",

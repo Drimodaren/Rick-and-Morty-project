@@ -1,36 +1,15 @@
-import {
-    All_LOCATIONS_COUNT,
-    CHANGE_CURRENT_PAGE,
-    CHANGE_FORM_FIELD,
-    ERRORS_LOCATIONS,
-    LOAD_MORE,
-    PAGE_RESET,
-    SET_LOADED,
-    SET_LOADED_RESIDENTS,
-    SET_LOADING,
-    SET_LOCATIONS,
-    SET_RESET_RESIDENTS
-} from "./actionTypes";
-import { LOADING_STATE } from "./constans";
+import { getActionsTypesByLabel } from "store/shared/sharedActionTypes";
+import { All_LOCATIONS_COUNT, SET_LOADED_RESIDENTS, SET_RESET_RESIDENTS } from "./actionTypes";
+import { LOADING_STATE } from "../shared/loadingState";
 import { INITIAL_STATE } from "./initialState";
+import { LABEL } from "store/shared/labels";
+import { sharedReducer } from "store/shared/sharedReducer";
 
 export const locationsReducer = (state = INITIAL_STATE, action) => {
+    if (getActionsTypesByLabel(LABEL.LOCATIONS).includes(action.type)) {
+        return sharedReducer(state, action, LABEL.LOCATIONS);
+    }
     switch (action.type) {
-        case SET_LOCATIONS:
-            return {
-                ...state,
-                locations: { byId: action.byId, allIds: action.allIds }
-            };
-        case SET_LOADING:
-            return {
-                ...state,
-                loading: LOADING_STATE.LOADING
-            };
-        case SET_LOADED:
-            return {
-                ...state,
-                loading: LOADING_STATE.LOADED
-            };
         case SET_LOADED_RESIDENTS:
             return {
                 ...state,
@@ -41,39 +20,12 @@ export const locationsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 loadingResedents: LOADING_STATE.NEVER
             };
-        case ERRORS_LOCATIONS:
+
+        case All_LOCATIONS_COUNT:
             return {
                 ...state,
-                errors: action.message
+                allLocationsCount: action.count
             };
-        case CHANGE_CURRENT_PAGE:
-            return {
-                ...state,
-                currentPage: state.currentPage + 1
-            };
-        case PAGE_RESET:
-            return {
-                ...state,
-                currentPage: INITIAL_STATE.currentPage
-            };
-        case LOAD_MORE:
-            return {
-                ...state,
-                locations: {
-                    byId: { ...state.locations.byId, ...action.byId },
-                    allIds: [...state.locations.allIds, ...action.allIds]
-                }
-            };
-        case CHANGE_FORM_FIELD:
-            return {
-                ...state,
-                form: { ...state.form, [action.fieldName]: action.value }
-            };
-            case All_LOCATIONS_COUNT:
-                return {
-                    ...state,
-                    allLocationsCount:action.count
-                }
         default:
             return state;
     }

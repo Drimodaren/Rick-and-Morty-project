@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "components/UI/Spinner";
 import { loadCharacters, loadMoreCharacters } from "store/characters/actions";
-import { LOADING_STATE } from "store/characters/constans";
+import { LOADING_STATE } from "store/shared/loadingState";
 import { getLoading, getErrors, getCharactersAllIds } from "store/characters/selectors";
 import style from "./Characters.module.scss";
 import image from "images/Charates_Main.png";
@@ -35,7 +35,7 @@ export default function Characters() {
                 ))}
                 {loading === LOADING_STATE.LOADING && <Spinner />}
             </div>
-            <LoadMore loadData={loadMoreCharacters()}/>
+            <LoadMore loadData={loadMoreCharacters()} />
         </div>
     );
 }

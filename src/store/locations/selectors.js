@@ -1,5 +1,5 @@
-export const getLocationsById = state => state.locations.locations.byId;
-export const getLocationsAllIds = state => state.locations.locations.allIds;
+export const getLocationsById = state => state.locations.entities.byId;
+export const getLocationsAllIds = state => state.locations.entities.allIds;
 export const getName = state => state.locations.form.name;
 export const getType = state => state.locations.form.type;
 export const getDimension = state => state.locations.form.Dimension;

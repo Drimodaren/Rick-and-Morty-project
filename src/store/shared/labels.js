@@ -1,0 +1,1 @@
+export const LABEL = {CHARACTERS:'characters', LOCATIONS:'locations', EPISODES:'episodes'}

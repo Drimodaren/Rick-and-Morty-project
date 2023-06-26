@@ -9,7 +9,7 @@ import {
     setLoadingAC,
     asyncThunk
 } from "../actions";
-import { LOADING_STATE } from "../constans";
+import { LOADING_STATE } from "../../shared/loadingState";
 import { INITIAL_STATE } from "../initialState";
 import { characterReducer } from "../reducer";
 import { getCharactersAllIds, getCharactersById, getErrors, getLoading, getPage } from "../selectors";
@@ -40,10 +40,10 @@ describe("charactersReducer", () => {
                     results: [{ id: 1 }, { id: 2 }]
                 }
             };
-            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response)); 
-            await store.dispatch(loadCharacters()); 
+            rickmortyapi.getCharacters.mockImplementation(() => Promise.resolve(response));
+            await store.dispatch(loadCharacters());
 
-            expect(getCharactersAllIds(store.getState())).toHaveLength(2); 
+            expect(getCharactersAllIds(store.getState())).toHaveLength(2);
         });
     });
 
