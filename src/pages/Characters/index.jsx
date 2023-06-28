@@ -9,6 +9,7 @@ import image from "images/Charates_Main.png";
 import LoadMore from "components/UI/LoadMore";
 import Filter from "./Filters/index.jsx";
 import CharacterCard from "./CharacterCard";
+import Quotes from "components/UI/Quotes";
 
 export default function Characters() {
     const dispatch = useDispatch();
@@ -25,10 +26,10 @@ export default function Characters() {
 
     return (
         <div className={style.characters}>
-            <img src={image} alt="Characters" />
-            <div>
-                <Filter />
-            </div>
+          <div> <Quotes image={image} /></div> 
+
+           <div className={style.filter}> <Filter /></div>
+
             <div className={style.charactersCards}>
                 {charactersIds.map(item => (
                     <CharacterCard id={item} key={item} />

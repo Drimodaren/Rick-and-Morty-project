@@ -8,12 +8,10 @@
         font-size: 1em;
     }
 
-    div:first-of-type {
+    .filter {
         display: flex;
         justify-content: center;
-        gap: 30px;
         width: 92%;
-        height: 56px;
     }
 }
 .charactersCards {

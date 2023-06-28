@@ -1,0 +1,25 @@
+.quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    img{
+      margin-bottom: 10px;
+    }
+
+.div_quote {
+    max-width: 1000px;
+    height: 120px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    overflow: auto;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+
+    .span {
+        font-size: 2em;
+        text-align: center;
+    }
+}
+}

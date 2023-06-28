@@ -23,7 +23,7 @@ export const sharedReducer = (state, action, label) => {
                 ...state,
                 entities: {
                     byId: { ...state.entities.byId, ...action.byId },
-                    allIds: [...state.entities.allIds, ...action.allIds]
+                    allIds: Array.from(new Set([...state.entities.allIds, ...action.allIds]))
                 }
             };
         case setLoading(label): {

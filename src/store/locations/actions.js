@@ -1,6 +1,6 @@
 import { getCharacter, getLocation, getLocations } from "rickmortyapi";
 import { All_LOCATIONS_COUNT, SET_LOADED_RESIDENTS, SET_RESET_RESIDENTS } from "./actionTypes";
-import { getDimension, getName, getPage, getType } from "./selectors";
+import { getDimension, getLocationById, getName, getPage, getType } from "./selectors";
 import { firstLoadingDataAC as setCharactersAC } from "store/characters/actions";
 import { actionCreators } from "store/shared/actionCreators";
 import { LABEL } from "store/shared/labels";
@@ -91,9 +91,14 @@ export const loadMoreLocations = () => async (dispatch, getState) => {
 
 const _loadLocation = id => async (dispatch, getState) => {
     dispatch(setResetResidentsAC());
-    const location = await getLocation(id);
-    dispatch(firstLoadingDataAC([location.data]));
-    const residents = location.data.residents.map(item => Number(item.split("/").at(-1)));
+    let location = getLocationById(getState(), id);
+
+    if (!location) {
+        location = (await getLocation(id)).data;
+        dispatch(firstLoadingDataAC([location]));
+    }
+
+    const residents = location.residents.map(item => Number(item.split("/").at(-1)));
     const charactersLocation = await getCharacter(residents);
     dispatch(
         setCharactersAC(Array.isArray(charactersLocation.data) ? charactersLocation.data : [charactersLocation.data])
