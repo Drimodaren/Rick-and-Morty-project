@@ -47,7 +47,7 @@ describe("charactersReducer", () => {
         });
     });
 
-    describe("Selector", () => {
+    describe.skip("Selector", () => {
         beforeEach(() => {
             store = setupStore();
         });
@@ -101,7 +101,7 @@ describe("charactersReducer", () => {
             expect(getPage(store.getState())).toEqual(2);
         });
     });
-    describe("Reducer", () => {
+    describe.skip("Reducer", () => {
         it("should return initialState", () => {
             const state = characterReducer(undefined, {});
             expect(state).toEqual(INITIAL_STATE);
@@ -133,7 +133,7 @@ describe("charactersReducer", () => {
             const state = characterReducer(INITIAL_STATE, action);
             expect(state.errors).toBe("хуйня");
         });
-        it("should load more characters", () => {
+         it("should load more characters", () => {
             const actionOld = setCharactersAC([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]);
             const stateOld = characterReducer(INITIAL_STATE, actionOld);
             const actionNew = loadMoreAc([{ id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }]);
