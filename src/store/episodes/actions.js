@@ -2,7 +2,7 @@ import { getEpisodes } from "rickmortyapi";
 import { actionCreators } from "store/shared/actionCreators";
 import { debounceThunk } from "store/shared/debounceThunk";
 import { LABEL } from "store/shared/labels";
-import { getName } from "./selectors";
+import { getName, getPage } from "./selectors";
 
 export const {
     setErrorsAC,
@@ -29,7 +29,6 @@ export const asyncThunk =
     };
 
 export const changeFilterThunk = (fieldName, value) => dispatch => {
-    debugger
     dispatch(changeFormFieldAC(fieldName, value));
     dispatch(resetPageAC());
     dispatch(debounceThunk(loadEpisodes));
@@ -43,4 +42,15 @@ const _loadEpisodes = () => async (dispatch, getState) => {
 export const loadEpisodes = () => async (dispatch, getState) => {
     dispatch(resetPageAC());
     dispatch(asyncThunk(_loadEpisodes));
+};
+const _loadMoreEpisodes = () => async (dispatch, getState) => {
+    const name = getName(getState());
+    const page = getPage(getState());
+    const episodes = await getEpisodes({ name, page });
+
+    dispatch(updateDataAC(episodes.data.results));
+};
+export const loadMoreEpisodes = () => async (dispatch, getState) => {
+    dispatch(changeCurrentPageAC());
+    dispatch(asyncThunk(_loadMoreEpisodes));
 };

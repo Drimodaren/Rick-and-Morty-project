@@ -7,7 +7,7 @@ import { changeFilterThunk } from "store/characters/actions";
 export default function BaseInputFilterCharacters({ fieldName, placeholder, label }) {
     const dispatch = useDispatch();
     const value = useSelector(state => state.characters.form[fieldName]);
-
+    
     const handleFilterName = e => {
         dispatch(changeFilterThunk(fieldName, e.target.value));
     };
