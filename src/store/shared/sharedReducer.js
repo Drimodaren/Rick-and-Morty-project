@@ -11,7 +11,7 @@ import {
     updateData
 } from "./sharedActionTypes";
 
-export const sharedReducer = (state, action, label) => {
+export const sharedReducer = (state = INITIAL_STATE, action, label) => {
     switch (action.type) {
         case firstLoadingData(label):
             return {
