@@ -49,6 +49,16 @@
 }
 .CardInformations {
     overflow: auto;
+    a {
+        width: 95%;
+        background-color: var(--main-grad-color);
+        border-bottom: solid;
+        margin-bottom: 10px;
+        h1 {
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+    }
 }
 
 ::-webkit-scrollbar {

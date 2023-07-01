@@ -8,3 +8,4 @@ export const getLoading = state => state.characters.loading;
 export const getErrors = state => state.characters.errors;
 export const getPage = state => state.characters.currentPage;
 export const getCharacterById = (state, id) => getCharactersById(state)[id];
+export const getLoadingEpisodes = state => state.characters.loadingEpisodes;

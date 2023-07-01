@@ -1,8 +1,10 @@
-import { getEpisodes } from "rickmortyapi";
+import { getCharacter, getEpisode, getEpisodes } from "rickmortyapi";
 import { actionCreators } from "store/shared/actionCreators";
+import { firstLoadingDataAC as setCharactersAC } from "store/characters/actions";
 import { debounceThunk } from "store/shared/debounceThunk";
 import { LABEL } from "store/shared/labels";
-import { getName, getPage } from "./selectors";
+import { getEpisodesById, getName, getPage } from "./selectors";
+import { SET_LOADED_RESIDENTS, SET_RESET_RESIDENTS } from "./actionTypes";
 
 export const {
     setErrorsAC,
@@ -14,6 +16,16 @@ export const {
     updateDataAC,
     changeFormFieldAC
 } = actionCreators(LABEL.EPISODES);
+export const setLoadedResidentsAC = () => {
+    return {
+        type: SET_LOADED_RESIDENTS
+    };
+};
+export const setResetResidentsAC = () => {
+    return {
+        type: SET_RESET_RESIDENTS
+    };
+};
 
 export const asyncThunk =
     (cb, ...arg) =>
@@ -53,4 +65,26 @@ const _loadMoreEpisodes = () => async (dispatch, getState) => {
 export const loadMoreEpisodes = () => async (dispatch, getState) => {
     dispatch(changeCurrentPageAC());
     dispatch(asyncThunk(_loadMoreEpisodes));
+};
+
+const _loadEpisode = id => async (dispatch, getState) => {
+    dispatch(setResetResidentsAC());
+    let episode = getEpisodesById(getState(), id);
+
+    if (!episode) {
+        episode = (await getEpisode(id)).data;
+
+        dispatch(firstLoadingDataAC([episode]));
+    }
+
+    const characters = episode.characters.map(item => Number(item.split("/").at(-1)));
+
+    const charactersEpisode = await getCharacter(characters);
+    dispatch(
+        setCharactersAC(Array.isArray(charactersEpisode.data) ? charactersEpisode.data : [charactersEpisode.data])
+    );
+    dispatch(setLoadedResidentsAC());
+};
+export const loadEpisode = id => async (dispatch, getState) => {
+    dispatch(asyncThunk(_loadEpisode, id));
 };

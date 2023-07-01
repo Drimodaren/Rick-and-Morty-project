@@ -9,7 +9,7 @@ import style from "./Episodes.module.scss";
 import LoadMore from "components/UI/LoadMore";
 export default function Episodes() {
     const [pickleRick, setPickleRick] = useState(false);
-    console.log(pickleRick);
+
     const episodesId = useSelector(getEpisodesByAllIds);
     const error = useSelector(getErrors);
     const dispatch = useDispatch();

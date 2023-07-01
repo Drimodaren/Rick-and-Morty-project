@@ -6,7 +6,6 @@ import { getCharacterById } from "store/characters/selectors";
 export default function CharacterCard({ id }) {
     const item = useSelector(state => getCharacterById(state, id));
 
-   
     return (
         <Card
             url={item.url}

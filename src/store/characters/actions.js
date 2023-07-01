@@ -1,8 +1,10 @@
-import { getCharacter, getCharacters } from "rickmortyapi";
-import { getGender, getName, getPage, getSpecies, getStatus } from "./selectors";
+import { getCharacter, getCharacters, getEpisode } from "rickmortyapi";
+import { getCharacterById, getGender, getName, getPage, getSpecies, getStatus } from "./selectors";
 import { actionCreators } from "store/shared/actionCreators";
+import { firstLoadingDataAC as setEpisodesAC } from "store/episodes/actions";
 import { LABEL } from "store/shared/labels";
 import { debounceThunk } from "store/shared/debounceThunk";
+import { SET_LOADED_EPISODES, SET_RESET_EPISODES } from "./actionTypes";
 
 const characterActionCreators = actionCreators(LABEL.CHARACTERS);
 export const {
@@ -16,6 +18,17 @@ export const {
     updateDataAC
 } = characterActionCreators;
 
+export const setLoadedEpisodesAC = () => {
+    return {
+        type: SET_LOADED_EPISODES
+    };
+};
+export const setResetEpisodesAC = () => {
+    return {
+        type: SET_RESET_EPISODES
+    };
+};
+
 export const asyncThunk =
     (cb, ...args) =>
     async (dispatch, getState) => {
@@ -28,7 +41,6 @@ export const asyncThunk =
             dispatch(setLoadedAC());
         }
     };
-
 
 export const changeFilterThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));
@@ -72,8 +84,20 @@ export const loadMoreCharacters = () => async (dispatch, getState) => {
 };
 
 const _loadCharacter = id => async (dispatch, getState) => {
-    const character = await getCharacter(id);
-    dispatch(firstLoadingDataAC([character.data]));
+    dispatch(setResetEpisodesAC());
+    let character = getCharacterById(getState(), id);
+
+    if (!character) {
+        character = (await getCharacter(id)).data;
+
+        dispatch(firstLoadingDataAC([character]));
+    }
+
+    const episodes = character.episode.map(item => Number(item.split("/").at(-1)));
+
+    const charactersEpisode = await getEpisode(episodes);
+    dispatch(setEpisodesAC(Array.isArray(charactersEpisode.data) ? charactersEpisode.data : [charactersEpisode.data]));
+    dispatch(setLoadedEpisodesAC());
 };
 export const loadCharacter = id => async (dispatch, getState) => {
     dispatch(asyncThunk(_loadCharacter, id));
