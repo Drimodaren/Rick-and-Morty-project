@@ -7,9 +7,7 @@ import {
     resetPage,
     setErrors,
     setLoaded,
-    setLoadedResidents,
     setLoading,
-    setResetResidents,
     updateData
 } from "./sharedActionTypes";
 
@@ -48,17 +46,6 @@ export const sharedReducer = (state, action, label) => {
                 ...state,
                 form: { ...state.form, [action.fieldName]: action.value }
             };
-            case setLoadedResidents(label):
-                return {
-                    ...state,
-                    loadingResedents: LOADING_STATE.LOADED
-                };
-            case setResetResidents(label):
-                return {
-                    ...state,
-                    loadingResedents: LOADING_STATE.NEVER
-                };
-    
 
         default:
             return state;
