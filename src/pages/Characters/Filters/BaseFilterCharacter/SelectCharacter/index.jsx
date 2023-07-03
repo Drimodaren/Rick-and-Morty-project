@@ -1,7 +1,7 @@
 import FilterSelect from "components/UI/Filter/FilterSelect";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeSelectThunk } from "store/characters/actions";
+import { changeSelectThunk } from "store/characters/slice";
 
 export default function BaseSelectFilterCharacters({ fieldName, placeholder, children }) {
     const dispatch = useDispatch();

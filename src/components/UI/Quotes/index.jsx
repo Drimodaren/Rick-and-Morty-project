@@ -13,7 +13,6 @@ export default function Quotes({ image }) {
     useEffect(() => {
         cb();
     }, []);
-    console.log(quote);
 
     return (
         <div className={style.quote} onClick={cb}>

@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "components/UI/Spinner";
-import { loadCharacters, loadMoreCharacters } from "store/characters/actions";
 import { LOADING_STATE } from "store/shared/loadingState";
-import { getLoading, getErrors, getCharactersAllIds } from "store/characters/selectors";
+import { getLoading, getErrors, getCharactersAllIds, loadCharacters, loadMoreCharacters } from "store/characters/slice";
 import style from "./Characters.module.scss";
 import image from "images/Charates_Main.png";
 import LoadMore from "components/UI/LoadMore";
@@ -26,9 +25,13 @@ export default function Characters() {
 
     return (
         <div className={style.characters}>
-          <div> <Quotes image={image} /></div> 
+            <div>
+                <Quotes image={image} />
+            </div>
 
-           <div className={style.filter}> <Filter /></div>
+            <div className={style.filter}>
+                <Filter />
+            </div>
 
             <div className={style.charactersCards}>
                 {charactersIds.map(item => (
@@ -36,7 +39,7 @@ export default function Characters() {
                 ))}
                 {loading === LOADING_STATE.LOADING && <Spinner />}
             </div>
-            <LoadMore loadData={loadMoreCharacters()} />
+            <LoadMore loadData={loadMoreCharacters} />
         </div>
     );
 }
