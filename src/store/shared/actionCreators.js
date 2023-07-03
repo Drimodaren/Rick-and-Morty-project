@@ -6,7 +6,9 @@ import {
     resetPage,
     setErrors,
     setLoaded,
+    setLoadedResidents,
     setLoading,
+    setResetResidents,
     updateData
 } from "./sharedActionTypes";
 
@@ -33,6 +35,16 @@ export const actionCreators = label => {
                 allIds
             };
         },
-        changeFormFieldAC: (fieldName, value) => ({ type: changeFormField(label), fieldName, value })
+        changeFormFieldAC: (fieldName, value) => ({ type: changeFormField(label), fieldName, value }),
+        setLoadedResidentsAC: () => {
+            return {
+                type: setLoadedResidents(label)
+            };
+        },
+        setResetResidentsAC: () => {
+            return {
+                type: setResetResidents(label)
+            };
+        }
     };
 };

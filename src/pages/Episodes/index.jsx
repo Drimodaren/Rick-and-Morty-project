@@ -39,7 +39,7 @@ export default function Episodes() {
                     <EpisodeCard id={item} key={item} />
                 ))}
             </div>
-            <LoadMore loadData={loadMoreEpisodes()} />
+            <LoadMore loadData={loadMoreEpisodes} />
         </div>
     );
 }

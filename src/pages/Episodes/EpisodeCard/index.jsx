@@ -7,8 +7,8 @@ export default function EpisodeCard({ id }) {
     const item = useSelector(state => getEpisodesById(state, id));
 
     return (
-        <div>
+        
             <Card title={item.name} description={item.air_date} info={item.episode} type={"/episodes"} id={item.id} />
-        </div>
+        
     );
 }

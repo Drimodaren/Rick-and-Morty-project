@@ -5,8 +5,10 @@ import { firstLoadingDataAC as setEpisodesAC } from "store/episodes/actions";
 import { LABEL } from "store/shared/labels";
 import { debounceThunk } from "store/shared/debounceThunk";
 import { SET_LOADED_EPISODES, SET_RESET_EPISODES } from "./actionTypes";
+import { sharedAsyncThunk } from "store/shared/sharedAsyncThunk";
 
 const characterActionCreators = actionCreators(LABEL.CHARACTERS);
+const asyncThunk = sharedAsyncThunk(LABEL.CHARACTERS);
 export const {
     changeCurrentPageAC,
     changeFormFieldAC,
@@ -28,19 +30,6 @@ export const setResetEpisodesAC = () => {
         type: SET_RESET_EPISODES
     };
 };
-
-export const asyncThunk =
-    (cb, ...args) =>
-    async (dispatch, getState) => {
-        dispatch(setLoadingAC());
-        try {
-            await dispatch(cb(...args));
-        } catch (e) {
-            dispatch(setErrorsAC(e.message));
-        } finally {
-            dispatch(setLoadedAC());
-        }
-    };
 
 export const changeFilterThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));

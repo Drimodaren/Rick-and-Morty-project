@@ -1,10 +1,11 @@
 import { getCharacter, getLocation, getLocations } from "rickmortyapi";
-import { All_LOCATIONS_COUNT, SET_LOADED_RESIDENTS, SET_RESET_RESIDENTS } from "./actionTypes";
+import { All_LOCATIONS_COUNT } from "./actionTypes";
 import { getDimension, getLocationById, getName, getPage, getType } from "./selectors";
 import { firstLoadingDataAC as setCharactersAC } from "store/characters/actions";
 import { actionCreators } from "store/shared/actionCreators";
 import { LABEL } from "store/shared/labels";
 import { debounceThunk } from "store/shared/debounceThunk";
+import { sharedAsyncThunk } from "store/shared/sharedAsyncThunk";
 
 const characterActionCreators = actionCreators(LABEL.LOCATIONS);
 export const {
@@ -15,20 +16,11 @@ export const {
     setErrorsAC,
     setLoadedAC,
     setLoadingAC,
-    updateDataAC
+    updateDataAC,
+    setLoadedResidentsAC,
+    setResetResidentsAC
 } = characterActionCreators;
-
-export const setLoadedResidentsAC = () => {
-    return {
-        type: SET_LOADED_RESIDENTS
-    };
-};
-export const setResetResidentsAC = () => {
-    return {
-        type: SET_RESET_RESIDENTS
-    };
-};
-
+const asyncThunk = sharedAsyncThunk(LABEL.LOCATIONS);
 export const setAllLocationsCount = count => {
     return {
         type: All_LOCATIONS_COUNT,
@@ -46,19 +38,6 @@ export const changeSelectThunk = (fieldName, value) => dispatch => {
     dispatch(resetPageAC());
     dispatch(asyncThunk(loadLocations));
 };
-
-export const asyncThunk =
-    (cb, ...args) =>
-    async (dispatch, getState) => {
-        dispatch(setLoadingAC());
-        try {
-            await dispatch(cb(...args));
-        } catch (e) {
-            dispatch(setErrorsAC(e.message));
-        } finally {
-            dispatch(setLoadedAC());
-        }
-    };
 
 const _loadLocations = () => async (dispatch, getState) => {
     const page = getPage(getState());

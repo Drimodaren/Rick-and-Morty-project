@@ -1,3 +1,0 @@
-export const SET_LOADED_RESIDENTS = "episodes/SET_LOADED_RESIDENTS";
-export const SET_RESET_RESIDENTS = "episodes/SET_RESET_RESIDENTS";
-

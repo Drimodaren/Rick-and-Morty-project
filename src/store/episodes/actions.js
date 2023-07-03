@@ -4,7 +4,7 @@ import { firstLoadingDataAC as setCharactersAC } from "store/characters/actions"
 import { debounceThunk } from "store/shared/debounceThunk";
 import { LABEL } from "store/shared/labels";
 import { getEpisodesById, getName, getPage } from "./selectors";
-import { SET_LOADED_RESIDENTS, SET_RESET_RESIDENTS } from "./actionTypes";
+import { sharedAsyncThunk } from "store/shared/sharedAsyncThunk";
 
 export const {
     setErrorsAC,
@@ -14,31 +14,12 @@ export const {
     changeCurrentPageAC,
     resetPageAC,
     updateDataAC,
-    changeFormFieldAC
+    changeFormFieldAC,
+    setLoadedResidentsAC,
+    setResetResidentsAC
 } = actionCreators(LABEL.EPISODES);
-export const setLoadedResidentsAC = () => {
-    return {
-        type: SET_LOADED_RESIDENTS
-    };
-};
-export const setResetResidentsAC = () => {
-    return {
-        type: SET_RESET_RESIDENTS
-    };
-};
 
-export const asyncThunk =
-    (cb, ...arg) =>
-    async (dispatch, getState) => {
-        dispatch(setLoadingAC());
-        try {
-            dispatch(cb(...arg));
-        } catch (e) {
-            dispatch(setErrorsAC(e.message));
-        } finally {
-            dispatch(setLoadedAC());
-        }
-    };
+const asyncThunk = sharedAsyncThunk(LABEL.EPISODES);
 
 export const changeFilterThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));
