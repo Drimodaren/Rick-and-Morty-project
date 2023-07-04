@@ -7,7 +7,8 @@ import {
     setErrorsAC,
     setLoadedAC,
     setLoadingAC,
-    asyncThunk
+    asyncThunk,
+    
 } from "../actions";
 import { LOADING_STATE } from "../../shared/loadingState";
 import { INITIAL_STATE } from "../initialState";
@@ -15,6 +16,7 @@ import { characterReducer } from "../reducer";
 import { getCharactersAllIds, getCharactersById, getErrors, getLoading, getPage } from "../selectors";
 
 import * as rickmortyapi from "rickmortyapi";
+
 jest.mock("rickmortyapi");
 let store;
 
@@ -26,7 +28,7 @@ describe("charactersReducer", () => {
             store = setupStore();
             mockDispatch.mockClear();
         });
-        it.skip("should call dispatch three times", async () => {
+        it("should call dispatch three times", async () => {
             const cb = () => dispatch => {};
             const thunk = asyncThunk(cb);
             await thunk(mockDispatch, store.getState);

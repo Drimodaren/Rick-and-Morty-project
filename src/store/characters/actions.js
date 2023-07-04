@@ -8,7 +8,7 @@ import { SET_LOADED_EPISODES, SET_RESET_EPISODES } from "./actionTypes";
 import { sharedAsyncThunk } from "store/shared/sharedAsyncThunk";
 
 const characterActionCreators = actionCreators(LABEL.CHARACTERS);
-const asyncThunk = sharedAsyncThunk(LABEL.CHARACTERS);
+export const asyncThunk = sharedAsyncThunk(LABEL.CHARACTERS);
 export const {
     changeCurrentPageAC,
     changeFormFieldAC,
