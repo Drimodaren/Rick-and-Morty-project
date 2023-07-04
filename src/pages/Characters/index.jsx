@@ -36,7 +36,7 @@ export default function Characters() {
                 ))}
                 {loading === LOADING_STATE.LOADING && <Spinner />}
             </div>
-            <LoadMore loadData={loadMoreCharacters()} />
+            <LoadMore loadData={loadMoreCharacters} />
         </div>
     );
 }

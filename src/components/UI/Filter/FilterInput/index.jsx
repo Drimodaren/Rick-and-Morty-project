@@ -4,6 +4,7 @@ import style from "../InputFilter.module.scss";
 export default function FilterInput({ value, label, placeholder, handleFilterName }) {
     const [labelPosition, setLabelPosition] = useState(value === "");
 
+
     const handleOnFocus = () => {
         setLabelPosition(false);
     };

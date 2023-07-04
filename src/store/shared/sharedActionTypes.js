@@ -27,6 +27,9 @@ export const resetPage = label => {
 export const changeFormField = label => {
     return label + "/CHANGE_FORM_FIELD";
 };
+export const setLoadedResidents=label=>{return label +'/SET_LOADED_RESIDENTS'} 
+export const setResetResidents=label=>{return label +'/SET_RESET_RESIDENTS'} 
+
 export const getActionsTypesByLabel = label => {
     return [
         firstLoadingData(label),
@@ -36,6 +39,15 @@ export const getActionsTypesByLabel = label => {
         setErrors(label),
         changeCurrentPage(label),
         resetPage(label),
-        changeFormField(label)
+        changeFormField(label),
+      
     ];
 };
+
+export const getActionsTypesByLabelResidents = label =>{
+    return [
+        setLoadedResidents(label),
+        setResetResidents(label)
+
+    ]
+}

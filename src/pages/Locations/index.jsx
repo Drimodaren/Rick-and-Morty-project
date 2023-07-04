@@ -36,7 +36,7 @@ export default function Locations() {
                 ))}
                 {loading === LOADING_STATE.LOADING && <Spinner />}
             </div>
-            <LoadMore loadData={loadMoreLocations()} />
+            <LoadMore loadData={loadMoreLocations} />
         </div>
     );
 }

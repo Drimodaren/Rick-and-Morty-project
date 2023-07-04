@@ -1,28 +1,35 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCharacterById } from "store/characters/selectors";
-import { loadCharacter } from "store/characters/actions";
+import { getCharacterById, getLoadingEpisodes } from "store/characters/selectors";
+import { loadCharacter, setResetEpisodesAC } from "store/characters/actions";
 import { Spinner } from "components/UI/Spinner";
 import style from "./SingleCharacters.module.scss";
-import EpisodesCharacter from "components/UI/EpisodesCharacter";
+
 import { withBackButton } from "components/UI/BackButton/withBackButton";
+import EpisodeCard from "pages/Episodes/EpisodeCard";
+import { LOADING_STATE } from "store/shared/loadingState";
 
 export function SingleCharacter() {
     const dispatch = useDispatch();
     const params = useParams();
     const id = Number(params.characterId);
     const character = useSelector(state => getCharacterById(state, id));
+    const loading = useSelector(getLoadingEpisodes);
 
     useEffect(() => {
-        if (!character) {
-            dispatch(loadCharacter(id));
-        }
+        dispatch(loadCharacter(id));
+
+        return () => {
+            dispatch(setResetEpisodesAC());
+        };
     }, [character, dispatch, id]);
 
-    if (!character) {
+    if (loading !== LOADING_STATE.LOADED) {
         return <Spinner />;
     }
+    const episodes = character?.episode.map(item => Number(item.split("/").at(-1))) ?? [];
+
     return (
         <div className={style.SingleCharacte}>
             <img src={character.image} alt="cardImage" className={style.cardImage} />
@@ -61,14 +68,8 @@ export function SingleCharacter() {
                 <div className={style.informationsPart}>
                     <span>Episodes</span>
                     <div className={style.CardInformations}>
-                        {character.episode.map(item => (
-                            <EpisodesCharacter
-                                key={item}
-                                url={item}
-                                // episode={item.episode}
-                                // name={item.name}
-                                // air_date={item.air_date}
-                            />
+                        {episodes.map(item => (
+                            <EpisodeCard key={item} id={item} />
                         ))}
                     </div>
                 </div>

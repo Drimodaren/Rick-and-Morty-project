@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 export default function LoadMore({ loadData }) {
     const dispatch = useDispatch();
     const loadMore = () => {
-        dispatch(loadData);
+        dispatch(loadData());
     };
     return (
         <button className={style.button} onClick={loadMore}>

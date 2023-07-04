@@ -15,9 +15,9 @@ export function SingleLocation() {
     const id = Number(params.locationId);
     const location = useSelector(state => getLocationById(state, id));
     const loading = useSelector(getLoadingResidents);
+
     useEffect(() => {
         dispatch(loadLocation(id));
-
         return () => {
             dispatch(setResetResidentsAC());
         };

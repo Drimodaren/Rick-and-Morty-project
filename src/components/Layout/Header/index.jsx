@@ -12,9 +12,9 @@ export default function Header() {
                 <Logo />
 
                 <div className={style.link}>
-                    <NavLinkButton  to={ROUTES.CHARACTERS}>Characters</NavLinkButton>
+                    <NavLinkButton to={ROUTES.CHARACTERS}>Characters</NavLinkButton>
 
-                    <NavLinkButton to={ROUTES.LOCATIONS}>Location</NavLinkButton>
+                    <NavLinkButton to={ROUTES.LOCATIONS}>Locations</NavLinkButton>
 
                     <NavLinkButton to={ROUTES.EPISODES}>Episodes</NavLinkButton>
                 </div>
