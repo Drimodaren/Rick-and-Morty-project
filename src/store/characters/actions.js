@@ -62,7 +62,7 @@ const _loadMoreCharacters = () => async (dispatch, getState) => {
     const gender = getGender(getState());
     const status = getStatus(getState());
     const characters = await getCharacters({ page, name, species, gender, status });
-
+    console.log("heheh");
     dispatch(updateDataAC(characters.data.results));
 };
 
