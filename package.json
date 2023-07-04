@@ -33,7 +33,7 @@
     "build-storybook": "build-storybook -s public",
     "prepare": "husky install",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": [
