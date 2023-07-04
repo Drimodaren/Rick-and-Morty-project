@@ -3,7 +3,6 @@ import { getCharacterById, getGender, getName, getPage, getSpecies, getStatus } 
 import { actionCreators } from "store/shared/actionCreators";
 import { firstLoadingDataAC as setEpisodesAC } from "store/episodes/actions";
 import { LABEL } from "store/shared/labels";
-import { debounceThunk } from "store/shared/debounceThunk";
 import { SET_LOADED_EPISODES, SET_RESET_EPISODES } from "./actionTypes";
 import { sharedAsyncThunk } from "store/shared/sharedAsyncThunk";
 
@@ -34,7 +33,7 @@ export const setResetEpisodesAC = () => {
 export const changeFilterThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));
     dispatch(resetPageAC());
-    dispatch(debounceThunk(loadCharacters));
+    dispatch(asyncThunk(loadCharacters));
 };
 export const changeSelectThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));
