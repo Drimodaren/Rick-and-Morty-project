@@ -4,7 +4,7 @@ import { getDimension, getLocationById, getName, getPage, getType } from "./sele
 import { firstLoadingDataAC as setCharactersAC } from "store/characters/actions";
 import { actionCreators } from "store/shared/actionCreators";
 import { LABEL } from "store/shared/labels";
-import { debounceThunk } from "store/shared/debounceThunk";
+
 import { sharedAsyncThunk } from "store/shared/sharedAsyncThunk";
 
 const characterActionCreators = actionCreators(LABEL.LOCATIONS);
@@ -31,7 +31,7 @@ export const setAllLocationsCount = count => {
 export const changeFilterThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));
     dispatch(resetPageAC());
-    dispatch(debounceThunk(loadLocations));
+    dispatch(asyncThunk(loadLocations));
 };
 export const changeSelectThunk = (fieldName, value) => dispatch => {
     dispatch(changeFormFieldAC(fieldName, value));
