@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import Layout from "../components/Layout";
 
 import { ROUTES } from "./constant";
@@ -12,7 +12,7 @@ const Characters = lazy(() => import("./Characters"));
 const SingleCharacter = lazy(() => import("./SingleCharacter"));
 const SingleLocation = lazy(() => import("./SingleLocation"));
 const SingleEpisode = lazy(() => import("./SingleEpisode"));
-export const route = createBrowserRouter([
+export const route = createHashRouter([
     {
         element: <Layout />,
         children: [
