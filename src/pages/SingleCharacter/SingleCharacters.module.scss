@@ -4,12 +4,12 @@
     align-items: center;
     margin: 20px;
     width: 100%;
-    overflow: hidden;
+    
     h1 {
         margin-bottom: 50px;
         font-size: 48px;
     }
-}
+
 .cardImage {
     margin: 20px;
     border-radius: 50%;
@@ -24,7 +24,7 @@
     height: 100%;
     flex: 1;
     gap: 10px;
-    overflow: hidden;
+   
 }
 
 .informationsPart {
@@ -60,7 +60,7 @@
         }
     }
 }
-
+}
 ::-webkit-scrollbar {
     width: 8px;
 }
