@@ -31,12 +31,14 @@ export function SingleCharacter() {
     const episodes = character?.episode.map(item => Number(item.split("/").at(-1))) ?? [];
 
     return (
-        <div className={style.SingleCharacte}>
-            <img src={character.image} alt="cardImage" className={style.cardImage} />
-            <h1>{character.name}</h1>
+        <div className={style.SingleCharacterMain}>
+            <div className={style.SingleCharacterAbout}>
+                <div className={style.SingleCharacterImgName}>
+                    <img src={character.image} alt="cardImage" className={style.cardImage} />
+                    <h1>{character.name}</h1>
+                </div>
 
-            <div className={style.allInformations}>
-                <div className={style.informationsPart}>
+                <div className={style.SingleCharacterInformations}>
                     <span>Informations</span>
                     <div className={style.CardInformations}>
                         <div>
@@ -65,13 +67,13 @@ export function SingleCharacter() {
                         </div>
                     </div>
                 </div>
-                <div className={style.informationsPart}>
-                    <span>Episodes</span>
-                    <div className={style.CardInformations}>
-                        {episodes.map(item => (
-                            <EpisodeCard key={item} id={item} />
-                        ))}
-                    </div>
+            </div>
+            <div className={style.SingleCharacterMainEpisode}>
+                <span>Episodes</span>
+                <div className={style.SingleCharacterEpisode}>
+                    {episodes.map(item => (
+                      <div key={item}> <EpisodeCard  id={item} /> </div>
+                    ))}
                 </div>
             </div>
         </div>

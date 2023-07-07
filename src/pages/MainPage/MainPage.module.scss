@@ -6,17 +6,12 @@
         transform: rotate(360deg);
     }
 }
-.mainDiv {
-    display: flex;
-    justify-content: center;
-    height: 80vh;
-    flex-wrap: wrap;
-}
+
 
 .MainPage {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    
     justify-content: space-evenly;
     align-items: center;
     align-content: center;
@@ -34,6 +29,7 @@
         display: inline-block;
         transform: scale(1);
     }
+ 
 }
 .secondDiv {
     display: flex;
@@ -43,6 +39,7 @@
         animation: spin 10s infinite linear;
         transition: filter 0.8s linear;
         filter: drop-shadow(4px 4px 10px var(--main-blueCharacter-color));
+        z-index: 1;
     }
     .episodesImg:hover {
         transition: filter 0.9s linear;
@@ -54,7 +51,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10px;
+    padding-bottom: 20px;
     img {
         filter: drop-shadow(4px 4px 25px black);
     }
