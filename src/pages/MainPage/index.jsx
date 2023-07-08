@@ -8,7 +8,7 @@ import style from "./MainPage.module.scss";
 
 export default function MainPage() {
     return (
-        
+    <div className={style.helpDiv}>
             <div className={style.MainPage}>
                 <div className={style.link}>
                     <NavLink to={ROUTES.CHARACTERS}>
@@ -31,7 +31,7 @@ export default function MainPage() {
                         <h1>LOCATIONS</h1>
                     </div>
                 </div>
-            </div>
+            </div></div>
         
     );
 }

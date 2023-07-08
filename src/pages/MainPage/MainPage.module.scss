@@ -6,9 +6,18 @@
         transform: rotate(360deg);
     }
 }
+.helpDiv {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    top:20px;
+}
 
 .MainPage {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
     & h1 {
         transition: all 0.6s;
         opacity: 0;
@@ -26,7 +35,7 @@
 }
 .secondDiv {
     display: flex;
-    
+    justify-content: space-around;
 
     .locationImg {
         animation: spin 10s infinite linear;
@@ -46,12 +55,9 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 20px;
-    flex:1;
+
     img {
         filter: drop-shadow(4px 4px 25px black);
-
-        flex: 1;
-        aspect-ratio: 2;
     }
     .characterImg:hover {
         transition: filter 0.8s ease-in-out;
