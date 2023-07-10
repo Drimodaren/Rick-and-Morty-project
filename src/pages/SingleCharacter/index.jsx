@@ -34,8 +34,8 @@ export function SingleCharacter() {
         <div className={style.SingleCharacterMain}>
             <div className={style.SingleCharacterAbout}>
                 <div className={style.SingleCharacterImgName}>
-                    <img src={character.image} alt="cardImage" className={style.cardImage} />
                     <h1>{character.name}</h1>
+                    <img src={character.image} alt="cardImage" className={style.cardImage} />
                 </div>
 
                 <div className={style.SingleCharacterInformations}>
@@ -72,7 +72,10 @@ export function SingleCharacter() {
                 <span>Episodes</span>
                 <div className={style.SingleCharacterEpisode}>
                     {episodes.map(item => (
-                      <div key={item}> <EpisodeCard  id={item} /> </div>
+                        <div key={item}>
+                            {" "}
+                            <EpisodeCard id={item} />{" "}
+                        </div>
                     ))}
                 </div>
             </div>

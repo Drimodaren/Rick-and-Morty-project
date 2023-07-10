@@ -1,6 +1,4 @@
 .SingleCharacterMain {
-    
-   
     margin: 20px;
     width: 100%;
     span {
@@ -17,40 +15,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            margin-top: 20px;
+            flex: 1;
             .cardImage {
                 margin: 20px;
                 border-radius: 50%;
-                height: 250px;
-                width: 250px;
+                height: 200px;
+                width: 200px;
+                margin-bottom: 50px;
             }
             h1 {
-                margin-bottom: 50px;
-                font-size: 48px;
+                font-size: 2.5em;
                 line-height: normal;
             }
         }
         .SingleCharacterInformations {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: end;
             width: 100%;
+            flex: 1;
             gap: 30px;
-            padding-top: 20px;
+
+            margin-top: 20px;
 
             .CardInformations {
                 display: flex;
-                justify-content: end;
-                flex-wrap: wrap;
-                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+
+                width: 70%;
 
                 div {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 20px;
-                    width: 30%;
-                    height: 20%;
+                    flex: 1;
                     border-bottom: solid;
 
                     h3 {
@@ -72,7 +72,7 @@
         align-items: center;
         width: 100%;
         color: var(--main-subtitleCard-color);
-        overflow: auto;
+        overflow: hidden;
         gap: 20px;
 
         span {
@@ -84,6 +84,8 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            overflow: auto;
+            width: 100%;
             gap: 10px;
             padding: 15px;
 
@@ -102,6 +104,47 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (min-height: 1000px) {
+    .SingleCharacterMain {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        .SingleCharacterAbout {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .SingleCharacterImgName {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 20px;
+                flex: 1;
+            }
+        }
+    }
+    .SingleCharacterMainEpisode {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: var(--main-subtitleCard-color);
+        overflow: hidden;
+        gap: 20px;
+        margin-bottom: 5%;
+        .SingleCharacterEpisode {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow: auto;
+            width: 100%;
+            gap: 10px;
+            padding: 15px;
         }
     }
 }
